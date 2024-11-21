@@ -49,3 +49,11 @@
     -fx-padding: 21;
 }
 /*Fin estilos login*/
+
+/*Incio estilos Sing_In*/
+#form2{
+    -fx-alignment: CENTER;
+    -fx-background-color: #F8D251;
+    -fx-background-radius: 8px;
+}
+/*Fin estilos Sing_In*/
