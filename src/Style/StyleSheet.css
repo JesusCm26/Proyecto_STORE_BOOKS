@@ -1,2 +1,6 @@
-
-
+#header{
+    -fx-alignment: CENTER;
+    -fx-background-color: #F8D251;
+    -fx-pref-width: 100%;
+    -fx-pref-height: 85px;
+}
