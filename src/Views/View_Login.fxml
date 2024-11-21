@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -13,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="662.0" prefWidth="1102.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23" fx:controller="Controllers.Controller_View_Login">
+<AnchorPane id="AnchorPane" prefHeight="662.0" prefWidth="1102.0" style="-fx-background-color: F5F5F5;" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23" fx:controller="Controllers.Controller_View_Login">
     <stylesheets>
         <URL value="@/Style/StyleSheet.css" />
     </stylesheets>
@@ -30,33 +31,30 @@
                </children>
             </HBox>
          </top>
-         <left>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
-         </left>
          <right>
             <VBox id="form" prefHeight="485.0" prefWidth="723.0" spacing="50.0" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets top="92.0" />
                </BorderPane.margin>
                <children>
-                  <TextField promptText="User" styleClass="txt_entrada">
+                  <TextField focusTraversable="false" promptText="User" styleClass="txt_entrada">
                      <font>
                         <Font name="SansSerif Bold" size="15.0" />
                      </font>
                   </TextField>
-                  <PasswordField promptText="Password" styleClass="txt_entrada">
+                  <PasswordField focusTraversable="false" promptText="Password" styleClass="txt_entrada">
                      <font>
                         <Font name="SansSerif Bold" size="15.0" />
                      </font>
                   </PasswordField>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
                      <children>
-                        <Button mnemonicParsing="false" styleClass="btn_login" text="INGRESAR" textFill="WHITE">
+                        <Button focusTraversable="false" mnemonicParsing="false" styleClass="btn_login" text="INGRESAR" textFill="WHITE">
                            <font>
                               <Font name="SansSerif Bold" size="14.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" styleClass="btn_login" text="REGISTRARSE" textFill="WHITE">
+                        <Button focusTraversable="false" mnemonicParsing="false" styleClass="btn_login" text="REGISTRARSE" textFill="WHITE">
                            <font>
                               <Font name="SansSerif Bold" size="14.0" />
                            </font>
@@ -66,6 +64,17 @@
                </children>
             </VBox>
          </right>
+         <left>
+            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="imageView" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="330.0" fitWidth="337.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../Images/Store.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
+         </left>
       </BorderPane>
    </children>
 </AnchorPane>

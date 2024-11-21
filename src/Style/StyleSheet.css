@@ -14,7 +14,6 @@
 }
 
 .txt_entrada{
-
     -fx-pref-width: 400px;
     -fx-pref-height: 40px;
     -fx-border-color: #000000;
@@ -30,7 +29,6 @@
 }
 
 .btn_login{
-
     -fx-background-color: #40C340;
     -fx-background-radius: 8px;
     -fx-pref-width: 180px;
@@ -44,5 +42,10 @@
 
 .btn_login:pressed{
     -fx-background-color: #2D852D;
+}
+
+.imageView{
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 21;
 }
 /*Fin estilos login*/
