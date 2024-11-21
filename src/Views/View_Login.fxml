@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -14,7 +20,7 @@
    <children>
       <BorderPane prefHeight="662.0" prefWidth="1102.0" stylesheets="@../Style/StyleSheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
-            <HBox id="header" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <HBox prefHeight="100.0" prefWidth="200.0" styleClass="header" BorderPane.alignment="CENTER">
                <children>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="STORE BOOKS">
                      <font>
@@ -24,6 +30,42 @@
                </children>
             </HBox>
          </top>
+         <left>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+         </left>
+         <right>
+            <VBox id="form" prefHeight="485.0" prefWidth="723.0" spacing="50.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets top="92.0" />
+               </BorderPane.margin>
+               <children>
+                  <TextField promptText="User" styleClass="txt_entrada">
+                     <font>
+                        <Font name="SansSerif Bold" size="15.0" />
+                     </font>
+                  </TextField>
+                  <PasswordField promptText="Password" styleClass="txt_entrada">
+                     <font>
+                        <Font name="SansSerif Bold" size="15.0" />
+                     </font>
+                  </PasswordField>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
+                     <children>
+                        <Button mnemonicParsing="false" styleClass="btn_login" text="INGRESAR" textFill="WHITE">
+                           <font>
+                              <Font name="SansSerif Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" styleClass="btn_login" text="REGISTRARSE" textFill="WHITE">
+                           <font>
+                              <Font name="SansSerif Bold" size="14.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </right>
       </BorderPane>
    </children>
 </AnchorPane>
