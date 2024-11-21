@@ -57,7 +57,7 @@
                         <Font name="SansSerif Bold" size="15.0" />
                      </font>
                   </PasswordField>
-                  <PasswordField promptText="Confirmar contraseña" styleClass="txt_entrada">
+                  <PasswordField promptText="Confirme la contraseña" styleClass="txt_entrada">
                      <font>
                         <Font name="SansSerif Bold" size="15.0" />
                      </font>
