@@ -9,8 +9,8 @@ public class Lista_Users {
     private int nUsers;
 
     public Lista_Users() {
-      this.cab = null;
-      this.nUsers = 0;
+        this.cab = null;
+        this.nUsers = 0;
     }
 
     public Nodo_User getCab() {
@@ -28,7 +28,7 @@ public class Lista_Users {
     public void setnUsers(int nUsers) {
         this.nUsers = nUsers;
     }
-        
+
     public void vaciarLista() {
         cab = null;
     }
@@ -38,5 +38,21 @@ public class Lista_Users {
         a.setTitle(tit);
         a.setContentText(mj);
         a.showAndWait();
+    }
+
+    public Nodo_User buscarEmail(String gmail) {
+        if (getCab() == null) {
+            return null;
+        } else {
+            Nodo_User aux = getCab();
+            while (aux != null) {
+                if (aux.getCorreo().equalsIgnoreCase(gmail)) {
+                    return aux;
+                } else {
+                    aux = aux.getSig();
+                }
+            }
+            return null;
+        }
     }
 }
