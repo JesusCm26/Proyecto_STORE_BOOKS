@@ -23,7 +23,7 @@ import javafx.stage.WindowEvent;
 
 public class Controller_View_Login implements Initializable {
 
-    private Lista_Users listaU = ModeloDeDatos.obtenerInstancia().getListaU();
+    private final Lista_Users listaU = ModeloDeDatos.obtenerInstancia().getListaU();
     
     @FXML
     private TextField txtUser;
