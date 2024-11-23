@@ -45,6 +45,7 @@ public class Controller_View_Sing_in implements Initializable {
 
     @FXML
     private void eventAction(ActionEvent event) {
+        agregarUsuarios(txt_nombre, txt_identificacion, txt_celular, txt_correo, txt_contrasena, txt_contrasenaConfirm);
     }
 
     public void closeWindow() {
@@ -66,7 +67,7 @@ public class Controller_View_Sing_in implements Initializable {
         }
     }
 
-    public void AgregarUsuarios(TextField txtNombre, TextField txtIdentificacion, TextField txtCell, TextField txtGmail, TextField txtNickName, PasswordField txtPassword, PasswordField txtPassword_2) {
+    public void agregarUsuarios(TextField txtNombre, TextField txtIdentificacion, TextField txtCell, TextField txtGmail, PasswordField txtPassword, PasswordField txtPassword_2) {
         Alert a = new Alert(Alert.AlertType.WARNING);
         a.setHeaderText("Informacion:");
         a.setTitle("Dialogo de advertencia");
@@ -79,35 +80,29 @@ public class Controller_View_Sing_in implements Initializable {
 
                     if (!"".equals(txtGmail.getText())) {
 
-                        if (!"".equals(txtNickName.getText())) {
+                        if (!"".equals(txtPassword.getText())) {
 
-                            if (!"".equals(txtPassword.getText())) {
+                            if (txtPassword.getText().equals(txtPassword_2.getText())) {
 
-                                if (txtPassword.getText().equals(txtPassword_2.getText())) {
+                                listaU.agregarUsuario(txtNombre, txtIdentificacion, txtCell, txtGmail, txtPassword);
+                                listaU.almacenarUsuariosEnArchivo_TXT(listaU);
 
-                                    listaU.agregarUsuario(txtNombre, txtIdentificacion, txtCell, txtGmail, txtPassword);
-                                    listaU.almacenarUsuariosEnArchivo_TXT(listaU);
-
-                                    if (listaU.getnUsers() != 0) {
-                                        txtPassword_2.setText("");
-                                        closeWindow();
-                                    }
-
-                                } else {
-                                    a.setContentText("Verifique su contraseña");
-                                    a.showAndWait();
+                                if (listaU.getnUsers() != 0) {
+                                    txtPassword_2.setText("");
+                                    closeWindow();
                                 }
 
                             } else {
-
-                                a.setContentText("Es necesario que se escriba una contraseña");
+                                a.setContentText("Verifique su contraseña");
                                 a.showAndWait();
                             }
+
                         } else {
 
-                            a.setContentText("Es necesario que se escriba un nombre de jugador");
+                            a.setContentText("Es necesario que se escriba una contraseña");
                             a.showAndWait();
                         }
+
                     } else {
 
                         a.setContentText("Es necesario que se escriba un correo");
