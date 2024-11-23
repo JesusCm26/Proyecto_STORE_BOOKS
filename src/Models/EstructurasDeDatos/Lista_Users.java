@@ -199,9 +199,9 @@ public class Lista_Users {
         }
     }
     
-    private void caragarUsuario(String nombre, String identifiacion, String celular, String correo, String contrasena) {
+    private void caragarUsuario(String nombre, String identificacion, String celular, String correo, String contrasena) {
         
-        Nodo_User user = new Nodo_User(nombre, Integer.parseInt(identifiacion), celular, correo, contrasena);
+        Nodo_User user = new Nodo_User(nombre, Integer.parseInt(identificacion), celular, correo, contrasena);
         
         if (getCab() == null) {
             setCab(user);
@@ -237,6 +237,7 @@ public class Lista_Users {
                 String correo = atributos[3];
                 String contrasena = atributos[4];
 
+                caragarUsuario(nombre, identificacion, celular, correo, contrasena);
             }
 
             System.out.println("Datos cargados correctamente desde archivo de usuasio.");
