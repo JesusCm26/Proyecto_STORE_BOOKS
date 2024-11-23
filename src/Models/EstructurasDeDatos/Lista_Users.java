@@ -73,10 +73,10 @@ public class Lista_Users {
             return null;
         }
     }
-    
+
     public ObservableList<Nodo_User> getUsuarios() {
         ObservableList<Nodo_User> todos = FXCollections.observableArrayList();
-        
+
         if (getCab() == null) {
             return todos;
         }
@@ -84,7 +84,7 @@ public class Lista_Users {
         Nodo_User actual = getCab();
 
         do {
-            
+
             todos.add(actual);
             actual = actual.getSig();
 

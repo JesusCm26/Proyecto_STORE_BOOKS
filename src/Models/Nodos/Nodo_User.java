@@ -9,14 +9,14 @@ public class Nodo_User {
     private String contrasena;
     private Nodo_User sig, ant;
 
-    public Nodo_User(String nombre, int identificacion, String num_celular, String correo, String contrasena, Nodo_User sig, Nodo_User ant) {
+    public Nodo_User(String nombre, int identificacion, String num_celular, String correo, String contrasena) {
         this.nombre = nombre;
         this.identificacion = identificacion;
         this.num_celular = num_celular;
         this.correo = correo;
         this.contrasena = contrasena;
-        this.sig = sig;
-        this.ant = ant;
+        this.sig = null;
+        this.ant = null;
     }
 
     public String getNombre() {
