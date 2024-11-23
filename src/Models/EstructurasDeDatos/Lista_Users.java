@@ -1,6 +1,11 @@
 package Models.EstructurasDeDatos;
 
 import Models.Nodos.Nodo_User;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
@@ -149,6 +154,33 @@ public class Lista_Users {
                 setCab(us);
                 nUsers++;
             }
+        }
+    }
+    
+    public void almacenarUsuariosEnArchivo_TXT(Lista_Users listaU) {
+
+        String direccion = System.getProperty("user.dir") + "\\src\\ArchivosBase_TXT\\Archivo_Usuarios.txt";
+
+        Path archivo = Paths.get(direccion);
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo.toFile(), false))) {
+            Nodo_User nodoActual = listaU.getCab();
+
+            while (nodoActual != null) {
+                writer.write(nodoActual.getNombre() + ", ");
+                writer.write(nodoActual.getIdentificacion() + ", ");
+                writer.write(nodoActual.getNum_celular()+ ", ");
+                writer.write(nodoActual.getCorreo() + ", ");
+                writer.write(nodoActual.getContrasena());
+
+                writer.newLine();
+
+                nodoActual = nodoActual.getSig();
+            }
+
+            System.out.println("Datos guardados correctamente en el archivo de usuarios.");
+        } catch (IOException e) {
+            System.out.println("Error al guardar los datos en el archivo de usuarios: " + e.getMessage());
         }
     }
     
