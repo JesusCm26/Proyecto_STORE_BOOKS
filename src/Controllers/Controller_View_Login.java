@@ -1,5 +1,8 @@
 package Controllers;
 
+import Models.EstructurasDeDatos.Lista_Users;
+import Models.ModeloDeDatos;
+import Models.Nodos.Nodo_User;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -11,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -19,6 +23,8 @@ import javafx.stage.WindowEvent;
 
 public class Controller_View_Login implements Initializable {
 
+    private Lista_Users listaU = ModeloDeDatos.obtenerInstancia().getListaU();
+    
     @FXML
     private TextField txtUser;
     @FXML
@@ -30,13 +36,15 @@ public class Controller_View_Login implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        listaU.cargarUsuariosDesdeArchivo_TXT();
     }
 
     @FXML
     private void eventAction(ActionEvent event) {
         if (event.getSource() == btn_ingresar) {
 
+            iniciarSesion();
+            
         } else if (event.getSource() == btn_registrarse) {
 
             try {
@@ -62,4 +70,73 @@ public class Controller_View_Login implements Initializable {
         }
     }
 
+    
+    public void Alert(Alert.AlertType alertType, String tit, String mj) {
+        Alert a = new Alert(alertType);
+        a.setTitle(tit);
+        a.setContentText(mj);
+        a.showAndWait();
+    }
+
+    public void iniciarSesion() {
+
+        if (txtUser.getText().isEmpty() && txtPass.getText().isEmpty()) {
+
+            Alert(Alert.AlertType.WARNING, "Advertencia", "No se puede verificar\nLos campos están vacios");
+
+        } else if (txtUser.getText().isEmpty()) {
+
+            Alert(Alert.AlertType.WARNING, "Advertencia", "No se puede verificar\nDebe ingresar un correo o usuario");
+
+        } else if (txtPass.getText().isEmpty()) {
+
+            Alert(Alert.AlertType.WARNING, "Adevertencia", "No se puede verificar\nDebe ingresar una contraseña");
+
+        } else {
+
+            Nodo_User buscar = listaU.buscarEmail(txtUser.getText());
+
+            if (buscar != null && buscar.getContrasena().equals(txtPass.getText())) {
+                Alert(Alert.AlertType.CONFIRMATION, "Información", "BIENVENIDO..!");
+
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/View_Principal.fxml"));
+                    Parent root = loader.load();
+
+                    Controller_View_Principal controller = loader.getController();
+                    controller.txt_user.setText(buscar.getCorreo());
+
+                    Scene scene = new Scene(root);
+                    Stage stage = new Stage();
+
+                    stage.setScene(scene);
+                    stage.setOnCloseRequest((WindowEvent value) -> {
+                        controller.closeWindow();
+                    });
+                    stage.show();
+
+                    Stage miStage = (Stage) this.btn_ingresar.getScene().getWindow();
+                    miStage.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(Controller_View_Login.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                txtUser.setText("");
+                txtPass.setText("");
+
+            } else {
+                Alert(Alert.AlertType.ERROR, "Alerta", "Contraseña incorrecta");
+                txtPass.setText("");
+                txtPass.requestFocus();
+            }
+
+            if (buscar == null) {
+                Alert(Alert.AlertType.ERROR, "Alerta", "El Correo \nno está registrado o es erroneo, por favor verifique");
+                txtUser.setText("");
+                txtPass.setText("");
+                txtUser.requestFocus();
+            }
+        }
+
+    }
 }
