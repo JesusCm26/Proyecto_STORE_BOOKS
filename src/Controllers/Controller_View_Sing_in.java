@@ -1,5 +1,7 @@
 package Controllers;
 
+import Models.EstructurasDeDatos.Lista_Users;
+import Models.ModeloDeDatos;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -11,12 +13,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class Controller_View_Sing_in implements Initializable {
+
+    private Lista_Users listaU = ModeloDeDatos.obtenerInstancia().getListaU();
 
     @FXML
     private TextField txt_nombre;
@@ -36,12 +41,12 @@ public class Controller_View_Sing_in implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void eventAction(ActionEvent event) {
     }
-    
+
     public void closeWindow() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/View_Login.fxml"));
@@ -58,6 +63,72 @@ public class Controller_View_Sing_in implements Initializable {
             miStage.close();
         } catch (IOException ex) {
             Logger.getLogger(Controller_View_Sing_in.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void AgregarUsuarios(TextField txtNombre, TextField txtIdentificacion, TextField txtCell, TextField txtGmail, TextField txtNickName, PasswordField txtPassword, PasswordField txtPassword_2) {
+        Alert a = new Alert(Alert.AlertType.WARNING);
+        a.setHeaderText("Informacion:");
+        a.setTitle("Dialogo de advertencia");
+
+        if (!"".equals(txtNombre.getText())) {
+
+            if (!"".equals(txtIdentificacion.getText())) {
+
+                if (!"".equals(txtCell.getText())) {
+
+                    if (!"".equals(txtGmail.getText())) {
+
+                        if (!"".equals(txtNickName.getText())) {
+
+                            if (!"".equals(txtPassword.getText())) {
+
+                                if (txtPassword.getText().equals(txtPassword_2.getText())) {
+
+                                    listaU.agregarUsuario(txtNombre, txtIdentificacion, txtCell, txtGmail, txtPassword);
+                                    listaU.almacenarUsuariosEnArchivo_TXT(listaU);
+
+                                    if (listaU.getnUsers() != 0) {
+                                        txtPassword_2.setText("");
+                                        closeWindow();
+                                    }
+
+                                } else {
+                                    a.setContentText("Verifique su contraseña");
+                                    a.showAndWait();
+                                }
+
+                            } else {
+
+                                a.setContentText("Es necesario que se escriba una contraseña");
+                                a.showAndWait();
+                            }
+                        } else {
+
+                            a.setContentText("Es necesario que se escriba un nombre de jugador");
+                            a.showAndWait();
+                        }
+                    } else {
+
+                        a.setContentText("Es necesario que se escriba un correo");
+                        a.showAndWait();
+                    }
+                } else {
+
+                    a.setContentText("Es necesario que se escriba un"
+                            + "\nnumero de numero de telefono");
+                    a.showAndWait();
+                }
+
+            } else {
+
+                a.setContentText("Es necesario que se escriba un numero de identificacion");
+                a.showAndWait();
+            }
+        } else {
+
+            a.setContentText("Es necesario que se escriba un nombre");
+            a.showAndWait();
         }
     }
 }
