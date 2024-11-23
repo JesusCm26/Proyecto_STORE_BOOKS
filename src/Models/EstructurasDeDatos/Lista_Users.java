@@ -1,6 +1,7 @@
 package Models.EstructurasDeDatos;
 
 import Models.Nodos.Nodo_User;
+import javafx.scene.control.Alert;
 
 public class Lista_Users {
 
@@ -28,4 +29,14 @@ public class Lista_Users {
         this.nUsers = nUsers;
     }
         
+    public void vaciarLista() {
+        cab = null;
+    }
+
+    public void Alert(Alert.AlertType alertType, String tit, String mj) {
+        Alert a = new Alert(alertType);
+        a.setTitle(tit);
+        a.setContentText(mj);
+        a.showAndWait();
+    }
 }
