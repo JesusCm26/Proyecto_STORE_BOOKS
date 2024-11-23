@@ -1,6 +1,8 @@
 package Models.EstructurasDeDatos;
 
 import Models.Nodos.Nodo_User;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 
 public class Lista_Users {
@@ -70,5 +72,24 @@ public class Lista_Users {
             }
             return null;
         }
+    }
+    
+    public ObservableList<Nodo_User> getUsuarios() {
+        ObservableList<Nodo_User> todos = FXCollections.observableArrayList();
+        
+        if (getCab() == null) {
+            return todos;
+        }
+
+        Nodo_User actual = getCab();
+
+        do {
+            
+            todos.add(actual);
+            actual = actual.getSig();
+
+        } while (actual != null && actual != getCab());
+
+        return todos;
     }
 }
