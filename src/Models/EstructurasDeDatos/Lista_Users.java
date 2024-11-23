@@ -1,7 +1,9 @@
 package Models.EstructurasDeDatos;
 
 import Models.Nodos.Nodo_User;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -184,4 +186,33 @@ public class Lista_Users {
         }
     }
     
+    public void cargarUsuariosDesdeArchivo_TXT() {
+
+        String direccion = System.getProperty("user.dir") + "\\src\\ArchivosBase_TXT\\Archivo_Usuarios.txt";
+
+        Path archivo = Paths.get(direccion);
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(archivo.toFile()))) {
+
+            String linea;
+
+            vaciarLista();
+
+            while ((linea = reader.readLine()) != null) {
+
+                String[] atributos = linea.split(", ");
+
+                String nombre = atributos[0];
+                String identificacion = atributos[1];
+                String celular = atributos[2];
+                String correo = atributos[3];
+                String contrasena = atributos[4];
+
+            }
+
+            System.out.println("Datos cargados correctamente desde archivo de usuasio.");
+        } catch (IOException e) {
+            System.out.println("Error al cargar los datos desde el archivo de usuarios: " + e.getMessage());
+        }
+    }
 }
