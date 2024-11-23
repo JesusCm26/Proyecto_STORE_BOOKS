@@ -198,6 +198,22 @@ public class Lista_Users {
             System.out.println("Error al guardar los datos en el archivo de usuarios: " + e.getMessage());
         }
     }
+    
+    private void caragarUsuario(String nombre, String identifiacion, String celular, String correo, String contrasena) {
+        
+        Nodo_User user = new Nodo_User(nombre, Integer.parseInt(identifiacion), celular, correo, contrasena);
+        
+        if (getCab() == null) {
+            setCab(user);
+            nUsers++;
+        } else {
+            Nodo_User ultimo = getUltimo();
+            
+            ultimo.setSig(user);
+            user.setAnt(ultimo);
+            nUsers++;
+        }
+    }
 
     public void cargarUsuariosDesdeArchivo_TXT() {
 
