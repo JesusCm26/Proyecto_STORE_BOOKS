@@ -55,4 +55,20 @@ public class Lista_Users {
             return null;
         }
     }
+
+    public Nodo_User buscarIdentificacion(int identificacion) {
+        if (getCab() == null) {
+            return null;
+        } else {
+            Nodo_User aux = getCab();
+            while (aux != null) {
+                if (aux.getIdentificacion() == identificacion) {
+                    return aux;
+                } else {
+                    aux = aux.getSig();
+                }
+            }
+            return null;
+        }
+    }
 }
