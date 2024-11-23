@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="662.0" prefWidth="1102.0" style="-fx-background-color: F5F5F5;" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23" fx:controller="Controllers.Controller_View_Login">
+<AnchorPane id="AnchorPane" prefHeight="662.0" prefWidth="1102.0" style="-fx-background-color: F5F5F5;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Controller_View_Login">
     <stylesheets>
         <URL value="@/Style/StyleSheet.css" />
     </stylesheets>
@@ -37,24 +37,24 @@
                   <Insets top="92.0" />
                </BorderPane.margin>
                <children>
-                  <TextField focusTraversable="false" promptText="User" styleClass="txt_entrada">
+                  <TextField fx:id="txtUser" focusTraversable="false" promptText="User" styleClass="txt_entrada">
                      <font>
                         <Font name="SansSerif Bold" size="15.0" />
                      </font>
                   </TextField>
-                  <PasswordField focusTraversable="false" promptText="Password" styleClass="txt_entrada">
+                  <PasswordField fx:id="txtPass" focusTraversable="false" promptText="Password" styleClass="txt_entrada">
                      <font>
                         <Font name="SansSerif Bold" size="15.0" />
                      </font>
                   </PasswordField>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
                      <children>
-                        <Button focusTraversable="false" mnemonicParsing="false" styleClass="btn_login" text="INGRESAR" textFill="WHITE">
+                        <Button fx:id="btn_ingresar" focusTraversable="false" mnemonicParsing="false" styleClass="btn_login" text="INGRESAR" textFill="WHITE">
                            <font>
                               <Font name="SansSerif Bold" size="14.0" />
                            </font>
                         </Button>
-                        <Button focusTraversable="false" mnemonicParsing="false" styleClass="btn_login" text="REGISTRARSE" textFill="WHITE">
+                        <Button fx:id="btn_registrarse" focusTraversable="false" mnemonicParsing="false" styleClass="btn_login" text="REGISTRARSE" textFill="WHITE">
                            <font>
                               <Font name="SansSerif Bold" size="14.0" />
                            </font>
