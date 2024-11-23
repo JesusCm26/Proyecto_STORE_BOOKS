@@ -31,7 +31,7 @@ public class Controller_View_Login implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void eventAction(ActionEvent event) {
@@ -40,7 +40,7 @@ public class Controller_View_Login implements Initializable {
         } else if (event.getSource() == btn_registrarse) {
 
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/View_Sign_in.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/View_Sing_in.fxml"));
                 Parent root = loader.load();
 
                 Controller_View_Sing_in controller = loader.getController();
@@ -61,5 +61,5 @@ public class Controller_View_Login implements Initializable {
             }
         }
     }
-    
+
 }

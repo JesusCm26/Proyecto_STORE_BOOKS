@@ -24,7 +24,7 @@ public class Controller_View_Principal implements Initializable {
     @FXML
     private Button btn_carrito;
     @FXML
-    private Text txt_user;
+    public Text txt_user;
 
     /**
      * Initializes the controller class.
