@@ -53,6 +53,19 @@ public class Lista_Users {
         a.showAndWait();
     }
 
+    public Nodo_User getUltimo() {
+
+        if (getCab() == null) {
+            return null;
+        } else {
+            Nodo_User u = getCab();
+            while (u.getSig() != null) {
+                u = u.getSig();
+            }
+            return u;
+        }
+    }
+    
     public Nodo_User buscarEmail(String gmail) {
         if (getCab() == null) {
             return null;
@@ -103,7 +116,7 @@ public class Lista_Users {
 
         return todos;
     }
-    
+
     public Nodo_User crearUsuario(TextField txtNombre, TextField txtIdentificacion, TextField txtCell, TextField txtGmail, PasswordField txtPassword) {
 
         Nodo_User buscar = buscarEmail(txtGmail.getText());
@@ -145,7 +158,7 @@ public class Lista_Users {
     public void agregarUsuario(TextField txtNombre, TextField txtIdentificacion, TextField txtCell, TextField txtGmail, PasswordField txtPassword) {
 
         Nodo_User us = crearUsuario(txtNombre, txtIdentificacion, txtCell, txtGmail, txtPassword);
-        
+
         if (us != null) {
             if (getCab() == null) {
                 setCab(us);
@@ -158,7 +171,7 @@ public class Lista_Users {
             }
         }
     }
-    
+
     public void almacenarUsuariosEnArchivo_TXT(Lista_Users listaU) {
 
         String direccion = System.getProperty("user.dir") + "\\src\\ArchivosBase_TXT\\Archivo_Usuarios.txt";
@@ -171,7 +184,7 @@ public class Lista_Users {
             while (nodoActual != null) {
                 writer.write(nodoActual.getNombre() + ", ");
                 writer.write(nodoActual.getIdentificacion() + ", ");
-                writer.write(nodoActual.getNum_celular()+ ", ");
+                writer.write(nodoActual.getNum_celular() + ", ");
                 writer.write(nodoActual.getCorreo() + ", ");
                 writer.write(nodoActual.getContrasena());
 
@@ -185,7 +198,7 @@ public class Lista_Users {
             System.out.println("Error al guardar los datos en el archivo de usuarios: " + e.getMessage());
         }
     }
-    
+
     public void cargarUsuariosDesdeArchivo_TXT() {
 
         String direccion = System.getProperty("user.dir") + "\\src\\ArchivosBase_TXT\\Archivo_Usuarios.txt";
