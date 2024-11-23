@@ -49,12 +49,12 @@
                   </PasswordField>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
                      <children>
-                        <Button fx:id="btn_ingresar" focusTraversable="false" mnemonicParsing="false" styleClass="btn_login" text="INGRESAR" textFill="WHITE">
+                        <Button fx:id="btn_ingresar" focusTraversable="false" mnemonicParsing="false" onAction="#eventAction" styleClass="btn_login" text="INGRESAR" textFill="WHITE">
                            <font>
                               <Font name="SansSerif Bold" size="14.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btn_registrarse" focusTraversable="false" mnemonicParsing="false" styleClass="btn_login" text="REGISTRARSE" textFill="WHITE">
+                        <Button fx:id="btn_registrarse" focusTraversable="false" mnemonicParsing="false" onAction="#eventAction" styleClass="btn_login" text="REGISTRARSE" textFill="WHITE">
                            <font>
                               <Font name="SansSerif Bold" size="14.0" />
                            </font>
