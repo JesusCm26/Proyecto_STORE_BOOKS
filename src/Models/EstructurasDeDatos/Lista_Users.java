@@ -135,4 +135,21 @@ public class Lista_Users {
 
     }
 
+    public void agregarUsuario(TextField txtNombre, TextField txtIdentificacion, TextField txtCell, TextField txtGmail, PasswordField txtPassword) {
+
+        Nodo_User us = crearUsuario(txtNombre, txtIdentificacion, txtCell, txtGmail, txtPassword);
+        
+        if (us != null) {
+            if (getCab() == null) {
+                setCab(us);
+                nUsers++;
+            } else {
+                us.setSig(getCab());
+                getCab().setAnt(us);
+                setCab(us);
+                nUsers++;
+            }
+        }
+    }
+    
 }
