@@ -312,7 +312,7 @@
                                     <Font name="SansSerif Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="65.0" layoutY="373.0" text="Antonie de Saint-Exupery">
+                              <Label layoutX="65.0" layoutY="373.0" text="Antonie de Saint - Exupery">
                                  <font>
                                     <Font name="SansSerif Bold" size="12.0" />
                                  </font>
