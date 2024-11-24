@@ -68,4 +68,13 @@
 .navBar Button{
     -fx-background-color: none;
 }
+
+.contenedorProducto{
+    -fx-background-color: #F8D251;
+    -fx-background-radius: 10px;
+}
+
+#separador{
+    -fx-background-color: #000000;
+}
 /*Fin estilos Principal(catálogo)*/
