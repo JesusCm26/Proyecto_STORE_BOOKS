@@ -57,15 +57,11 @@ public class Controller_View_Principal implements Initializable {
 
         if (event.getSource() == btn_userOptions) {
             paneOpcionesUser.setVisible(!paneOpcionesUser.isVisible());
-            System.out.println("1");
         } else if (event.getSource() == btn_cerrarSesión) {
             closeWindow();
-            System.out.println("2");
         } else if (event.getSource() == btn_carrito) {
             panelCarrito.setVisible(!panelCarrito.isVisible());
-            System.out.println("3");
         } else if (event.getSource() == btn_favoritos) {
-            System.out.println("4");
         }
     }
 
