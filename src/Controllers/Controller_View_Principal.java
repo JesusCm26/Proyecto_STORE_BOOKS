@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -25,6 +26,10 @@ public class Controller_View_Principal implements Initializable {
     private Button btn_carrito;
     @FXML
     public Text txt_user;
+    @FXML
+    private Pane paneOpcionesUser;
+    @FXML
+    private Button btn_cerrarSesión;
 
     /**
      * Initializes the controller class.
@@ -36,6 +41,14 @@ public class Controller_View_Principal implements Initializable {
 
     @FXML
     private void eventAction(ActionEvent event) {
+
+        if (event.getSource() == btn_userOptions) {
+            paneOpcionesUser.setVisible(paneOpcionesUser.isVisible());
+        } else if (event.getSource() == btn_cerrarSesión) {
+            closeWindow();
+        } else if (event.getSource() == btn_carrito) {
+        } else if (event.getSource() == btn_favoritos) {
+        }
     }
 
     public void closeWindow() {

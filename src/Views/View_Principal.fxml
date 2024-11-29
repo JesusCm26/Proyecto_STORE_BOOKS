@@ -329,5 +329,14 @@
             </AnchorPane>
          </center>
       </BorderPane>
+      <Pane fx:id="paneOpcionesUser" layoutX="24.0" layoutY="76.0" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: FFFFFF; -fx-border-color: black; -fx-border-radius: 8px; -fx-background-radius: 8px;">
+         <children>
+            <Button fx:id="btn_cerrarSesión" layoutX="14.0" layoutY="16.0" mnemonicParsing="false" onAction="#eventAction" prefHeight="28.0" prefWidth="150.0" style="-fx-background-color: #40C340; -fx-border-color: black; -fx-border-radius: 8px; -fx-background-radius: 8px;" text="Cerrar Sesión" textFill="WHITE">
+               <font>
+                  <Font name="SansSerif Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
