@@ -91,6 +91,74 @@ public class Pila_Books {
         }
     }
     
+    public void setPushFav(Nodo_Book b) {
+        int pos = pilaFav.indexOf(b);
+        if (pos == -1) {
+            pilaFav.push(b);
+        } else {
+            System.out.println("Ya se encuentra registrado este libro");
+        }
+    }
+
+    public Stack<Nodo_Book> getBooksFav(int id) {
+        Stack<Nodo_Book> pila = new Stack<>();
+        for (Nodo_Book aux : pilaFav) {
+            if (aux.getIdPropietario()== id) {
+                pila.push(aux);
+            }
+        }
+        return pila;
+    }
+
+    public Nodo_Book getBookFav(int id) {
+        for (Nodo_Book aux : pilaFav) {
+            if (aux.getIdPropietario() == id) {
+                return aux;
+            }
+        }
+        return null;
+    }
+
+    public void popBookFav(int id) {
+        Alert alert = new Alert(Alert.AlertType.NONE);
+
+        Nodo_Book aux = null;
+        if (!pilaFav.empty()) {
+            aux = getBook(id);
+            if ((aux != null) && (pilaFav.remove(aux))) {
+                alert.setAlertType(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Aviso.");
+                alert.setContentText("Libro elimindo.");
+                alert.showAndWait();
+            } else {
+                alert.setAlertType(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Aviso.");
+                alert.setContentText("La camiseta no existe.");
+                alert.showAndWait();
+            }
+        } else {
+            alert.setAlertType(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Aviso.");
+            alert.setContentText("No hay camisetas registradas");
+            alert.showAndWait();
+        }
+    }
+
+    public Stack<Nodo_Book> getClonarFav() {
+        Stack<Nodo_Book> caux = new Stack<>();
+        int i;
+        Nodo_Book aux = null;
+        if (this.pilaFav == null) {
+            return null;
+        } else {
+            for (i = 0; i < pilaFav.size(); i++) {
+                aux = pilaFav.get(i);
+                caux.add(i, aux);
+            }
+            return caux;
+        }
+    }
+    
     public void eliminar(Stack<Nodo_Book> pila, int id) {
         Stack<Nodo_Book> temp = new Stack<>();
 
