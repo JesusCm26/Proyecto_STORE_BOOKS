@@ -77,4 +77,42 @@
 #separador{
     -fx-background-color: #000000;
 }
+
+#panelCarrito{
+    -fx-background-color: whitesmoke;
+    -fx-background-radius: 10px;
+    -fx-border-color: #000000;
+    -fx-border-radius: 10px;
+}
+
+#btnComprar{
+    -fx-pref-width: 310px;
+    -fx-pref-height: 60px;
+    -fx-background-color: #40C340;
+    -fx-background-radius: 10px;
+    -fx-border-color: #000000;
+    -fx-border-radius: 10px;
+}
+
+.bookCarrito{
+    -fx-pref-width: 310px;
+    -fx-pref-height: 70px;
+    -fx-background-color: #F8D251;
+    -fx-background-radius: 8px;
+}
+
+#btnCerrarSesion{
+    -fx-background-color:  #40C340;
+    -fx-border-color:  black;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+}
+
+#btnCerrarSesion:hover {
+    -fx-background-color: #60CC60;
+}
+
+#btnCerrarSesion:pressed {
+    -fx-background-color: #2D852D;
+}
 /*Fin estilos Principal(catálogo)*/
