@@ -2,7 +2,7 @@ package Models.Nodos;
 
 public class Nodo_Book {
     
-    private int id;
+    private int idPropietario;
     private String titulo;
     private String autor;
     private String descripcion;
@@ -10,8 +10,8 @@ public class Nodo_Book {
     private String fechaPublicacion;
     private Nodo_Book sig, ant;
 
-    public Nodo_Book(int id, String titulo, String autor, String descripcion, float precio, String fechaPublicacion, Nodo_Book sig, Nodo_Book ant) {
-        this.id = id;
+    public Nodo_Book(int idPropietario, String titulo, String autor, String descripcion, float precio, String fechaPublicacion, Nodo_Book sig, Nodo_Book ant) {
+        this.idPropietario = idPropietario;
         this.titulo = titulo;
         this.autor = autor;
         this.descripcion = descripcion;
@@ -21,12 +21,12 @@ public class Nodo_Book {
         this.ant = ant;
     }
 
-    public int getId() {
-        return id;
+    public int getIdPropietario() {
+        return idPropietario;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdPropietario(int idPropietario) {
+        this.idPropietario = idPropietario;
     }
 
     public String getTitulo() {
