@@ -32,12 +32,12 @@ public class Controller_View_Principal implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void eventAction(ActionEvent event) {
     }
-    
+
     public void closeWindow() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/View_Login.fxml"));
@@ -48,9 +48,19 @@ public class Controller_View_Principal implements Initializable {
             Stage stage = new Stage();
 
             stage.setScene(scene);
-            stage.show();
 
             Stage miStage = (Stage) this.btn_carrito.getScene().getWindow();
+            stage.setMaximized(miStage.isMaximized());
+            stage.setX(miStage.getX());
+            stage.setY(miStage.getY());
+            stage.setWidth(miStage.getWidth());
+            stage.setHeight(miStage.getHeight());
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Controller_View_Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            stage.show();
             miStage.close();
         } catch (IOException ex) {
             Logger.getLogger(Controller_View_Principal.class.getName()).log(Level.SEVERE, null, ex);

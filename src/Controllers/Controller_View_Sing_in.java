@@ -48,7 +48,7 @@ public class Controller_View_Sing_in implements Initializable {
         agregarUsuarios(txt_nombre, txt_identificacion, txt_celular, txt_correo, txt_contrasena, txt_contrasenaConfirm);
     }
 
-    public void closeWindow() {
+    public void closeWindow(){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/View_Login.fxml"));
 
@@ -58,9 +58,19 @@ public class Controller_View_Sing_in implements Initializable {
             Stage stage = new Stage();
 
             stage.setScene(scene);
-            stage.show();
 
             Stage miStage = (Stage) this.btn_registrarse.getScene().getWindow();
+            stage.setMaximized(miStage.isMaximized());
+            stage.setX(miStage.getX());
+            stage.setY(miStage.getY());
+            stage.setWidth(miStage.getWidth());
+            stage.setHeight(miStage.getHeight());
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Controller_View_Sing_in.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            stage.show();
             miStage.close();
         } catch (IOException ex) {
             Logger.getLogger(Controller_View_Sing_in.class.getName()).log(Level.SEVERE, null, ex);

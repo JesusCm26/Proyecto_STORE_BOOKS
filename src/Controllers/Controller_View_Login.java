@@ -24,7 +24,7 @@ import javafx.stage.WindowEvent;
 public class Controller_View_Login implements Initializable {
 
     private final Lista_Users listaU = ModeloDeDatos.obtenerInstancia().getListaU();
-    
+
     @FXML
     private TextField txtUser;
     @FXML
@@ -44,7 +44,7 @@ public class Controller_View_Login implements Initializable {
         if (event.getSource() == btn_ingresar) {
 
             iniciarSesion();
-            
+
         } else if (event.getSource() == btn_registrarse) {
 
             try {
@@ -60,9 +60,19 @@ public class Controller_View_Login implements Initializable {
                 stage.setOnCloseRequest((WindowEvent value) -> {
                     controller.closeWindow();
                 });
-                stage.show();
 
                 Stage miStage = (Stage) this.btn_ingresar.getScene().getWindow();
+                stage.setMaximized(miStage.isMaximized());
+                stage.setX(miStage.getX());
+                stage.setY(miStage.getY());
+                stage.setWidth(miStage.getWidth());
+                stage.setHeight(miStage.getHeight());
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Controller_View_Login.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                stage.show();
                 miStage.close();
             } catch (IOException ex) {
                 Logger.getLogger(Controller_View_Login.class.getName()).log(Level.SEVERE, null, ex);
@@ -70,7 +80,6 @@ public class Controller_View_Login implements Initializable {
         }
     }
 
-    
     public void Alert(Alert.AlertType alertType, String tit, String mj) {
         Alert a = new Alert(alertType);
         a.setTitle(tit);
@@ -113,9 +122,19 @@ public class Controller_View_Login implements Initializable {
                     stage.setOnCloseRequest((WindowEvent value) -> {
                         controller.closeWindow();
                     });
-                    stage.show();
 
                     Stage miStage = (Stage) this.btn_ingresar.getScene().getWindow();
+                    stage.setMaximized(miStage.isMaximized());
+                    stage.setX(miStage.getX());
+                    stage.setY(miStage.getY());
+                    stage.setWidth(miStage.getWidth());
+                    stage.setHeight(miStage.getHeight());
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Controller_View_Login.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    stage.show();
                     miStage.close();
                 } catch (IOException ex) {
                     Logger.getLogger(Controller_View_Login.class.getName()).log(Level.SEVERE, null, ex);
