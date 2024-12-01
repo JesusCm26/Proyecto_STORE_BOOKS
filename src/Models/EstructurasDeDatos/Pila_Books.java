@@ -237,4 +237,29 @@ public class Pila_Books {
             System.out.println("Error al cargar los datos desde Archivo_Books_Carrito.txt: " + e.getMessage());
         }
     }
+    
+    public void guardarBooks_Fav() {
+
+        String direccion = System.getProperty("user.dir") + "\\src\\ArchivosBase_TXT\\Archivo_Books_Favoritos.txt";
+
+        Path archivo = Paths.get(direccion);
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo.toFile(), false))) {
+
+            for (Nodo_Book book : pilaFav) {
+                writer.write(book.getIdPropietario() + ", ");
+                writer.write(book.getTitulo() + ", ");
+                writer.write(book.getAutor() + ", ");
+                writer.write(book.getDescripcion() + ", ");
+                writer.write(book.getPrecio() + ", ");
+                writer.write(book.getFechaPublicacion() + ", ");
+                writer.write(book.getURL_IMAGE());
+                writer.newLine();
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error al guardar los datos en el archivo: Archivo_Books_Favoritos.txt: " + e.getMessage());
+        }
+    }
+    
 }
