@@ -24,6 +24,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -33,8 +34,8 @@ import javafx.stage.Stage;
 
 public class Controller_View_Principal implements Initializable {
 
-    private Pila_Books pilaB = ModeloDeDatos.obtenerInstancia().getPialB();
-    private Lista_Users listaU = ModeloDeDatos.obtenerInstancia().getListaU();
+    private final Pila_Books pilaB = ModeloDeDatos.obtenerInstancia().getPialB();
+    private final Lista_Users listaU = ModeloDeDatos.obtenerInstancia().getListaU();
 
     private ObservableList<HBox> elementosCarrito;
     private ObservableList<HBox> elementosFavoritos;
@@ -113,6 +114,8 @@ public class Controller_View_Principal implements Initializable {
     private Pane B_Hamlet;
     @FXML
     private Pane B_Principito;
+    @FXML
+    private AnchorPane catalogo;
 
     /**
      * Initializes the controller class.
@@ -229,6 +232,10 @@ public class Controller_View_Principal implements Initializable {
                     pilaB.setPush(book);
                     pilaB.guardarBooks();
                     Alert(Alert.AlertType.INFORMATION, "Aviso", "Libro agregado exitosamente al carrito..!");
+                    containerBooksF.getChildren().remove(p1);
+                    pilaB.popBookFav(user.getIdentificacion(), "Juego de Tronos");
+                    pilaB.guardarBooks_Fav();
+                    pilaB.cargarBooks_Fav();
                 } else {
                     if (pilaB.getPilaC().indexOf(book) != -1) {
                         Alert(Alert.AlertType.INFORMATION, "Aviso", "El Libro ya ha sido agregado al carrito..!");
@@ -236,6 +243,10 @@ public class Controller_View_Principal implements Initializable {
                         pilaB.setPush(book);
                         pilaB.guardarBooks();
                         Alert(Alert.AlertType.INFORMATION, "Aviso", "Libro agregado exitosamente al carrito..!");
+                        containerBooksF.getChildren().remove(p1);
+                        pilaB.popBookFav(user.getIdentificacion(), "Juego de Tronos");
+                        pilaB.guardarBooks_Fav();
+                        pilaB.cargarBooks_Fav();
                     }
                 }
                 break;
@@ -255,6 +266,10 @@ public class Controller_View_Principal implements Initializable {
                     pilaB.setPush(book2);
                     pilaB.guardarBooks();
                     Alert(Alert.AlertType.INFORMATION, "Aviso", "Libro agregado exitosamente al carrito..!");
+                    containerBooksF.getChildren().remove(p2);
+                    pilaB.popBookFav(user.getIdentificacion(), "Divergente");
+                    pilaB.guardarBooks_Fav();
+                    pilaB.cargarBooks_Fav();
                 } else {
                     if (pilaB.getPilaC().indexOf(book2) != -1) {
                         Alert(Alert.AlertType.INFORMATION, "Aviso", "El Libro ya ha sido agregado al carrito..!");
@@ -262,6 +277,10 @@ public class Controller_View_Principal implements Initializable {
                         pilaB.setPush(book2);
                         pilaB.guardarBooks();
                         Alert(Alert.AlertType.INFORMATION, "Aviso", "Libro agregado exitosamente al carrito..!");
+                        containerBooksF.getChildren().remove(p2);
+                        pilaB.popBookFav(user.getIdentificacion(), "Divergente");
+                        pilaB.guardarBooks_Fav();
+                        pilaB.cargarBooks_Fav();
                     }
                 }
                 break;
@@ -284,6 +303,10 @@ public class Controller_View_Principal implements Initializable {
                     pilaB.setPush(book3);
                     pilaB.guardarBooks();
                     Alert(Alert.AlertType.INFORMATION, "Aviso", "Libro agregado exitosamente al carrito..!");
+                    containerBooksF.getChildren().remove(p3);
+                    pilaB.popBookFav(user.getIdentificacion(), "Hamlet");
+                    pilaB.guardarBooks_Fav();
+                    pilaB.cargarBooks_Fav();
                 } else {
                     if (pilaB.getPilaC().indexOf(book3) != -1) {
                         Alert(Alert.AlertType.INFORMATION, "Aviso", "El Libro ya ha sido agregado al carrito..!");
@@ -291,6 +314,10 @@ public class Controller_View_Principal implements Initializable {
                         pilaB.setPush(book3);
                         pilaB.guardarBooks();
                         Alert(Alert.AlertType.INFORMATION, "Aviso", "Libro agregado exitosamente al carrito..!");
+                        containerBooksF.getChildren().remove(p3);
+                        pilaB.popBookFav(user.getIdentificacion(), "Hamlet");
+                        pilaB.guardarBooks_Fav();
+                        pilaB.cargarBooks_Fav();
                     }
                 }
                 break;
@@ -311,6 +338,10 @@ public class Controller_View_Principal implements Initializable {
                     pilaB.setPush(book4);
                     pilaB.guardarBooks();
                     Alert(Alert.AlertType.INFORMATION, "Aviso", "Libro agregado exitosamente al carrito..!");
+                    containerBooksF.getChildren().remove(p4);
+                    pilaB.popBookFav(user.getIdentificacion(), "Principito");
+                    pilaB.guardarBooks_Fav();
+                    pilaB.cargarBooks_Fav();
                 } else {
                     if (pilaB.getPilaC().indexOf(book4) != -1) {
                         Alert(Alert.AlertType.INFORMATION, "Aviso", "El Libro ya ha sido agregado al carrito..!");
@@ -318,8 +349,48 @@ public class Controller_View_Principal implements Initializable {
                         pilaB.setPush(book4);
                         pilaB.guardarBooks();
                         Alert(Alert.AlertType.INFORMATION, "Aviso", "Libro agregado exitosamente al carrito..!");
+                        containerBooksF.getChildren().remove(p4);
+                        pilaB.popBookFav(user.getIdentificacion(), "Principito");
+                        pilaB.guardarBooks_Fav();
+                        pilaB.cargarBooks_Fav();
                     }
                 }
+                break;
+            default:
+                throw new AssertionError();
+        }
+    }
+
+    @FXML
+    private void eliminarDeCarrito(MouseEvent event) {
+        Nodo_User user = listaU.buscarEmail(txt_user.getText());
+        Stack<Nodo_Book> pila = pilaB.getBooks(user.getIdentificacion());
+        ImageView ima = (ImageView) event.getSource();
+
+        switch (ima.getParent().getId()) {
+            case "e1":
+                containerBooksC.getChildren().remove(e1);
+                pilaB.popBook(user.getIdentificacion(), "Juego de Tronos");
+                pilaB.guardarBooks();
+                pilaB.cargarBooks();
+                break;
+            case "e2":
+                containerBooksC.getChildren().remove(e2);
+                pilaB.popBook(user.getIdentificacion(), "Divergente");
+                pilaB.guardarBooks();
+                pilaB.cargarBooks();
+                break;
+            case "e3":
+                containerBooksC.getChildren().remove(e3);
+                pilaB.popBook(user.getIdentificacion(), "Hamlet");
+                pilaB.guardarBooks();
+                pilaB.cargarBooks();
+                break;
+            case "e4":
+                containerBooksC.getChildren().remove(e4);
+                pilaB.popBook(user.getIdentificacion(), "Principito");
+                pilaB.guardarBooks();
+                pilaB.cargarBooks();
                 break;
             default:
                 throw new AssertionError();

@@ -62,11 +62,11 @@
             </AnchorPane>
          </top>
          <center>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <AnchorPane fx:id="catalogo" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <FlowPane alignment="CENTER" hgap="30.0" prefHeight="577.0" prefWidth="1102.0">
+                  <FlowPane fx:id="containerCat" alignment="CENTER" hgap="30.0" prefHeight="577.0" prefWidth="1102.0">
                      <children>
-                        <Pane prefHeight="450.0" prefWidth="240.0" styleClass="contenedorProducto">
+                        <Pane fx:id="B_Juegos" prefHeight="450.0" prefWidth="240.0" styleClass="contenedorProducto">
                            <children>
                               <VBox alignment="CENTER" layoutX="53.0" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
                                  <children>
@@ -131,7 +131,7 @@
                               </Label>
                            </children>
                         </Pane>
-                        <Pane prefHeight="450.0" prefWidth="240.0" styleClass="contenedorProducto">
+                        <Pane fx:id="B_Divergente" prefHeight="450.0" prefWidth="240.0" styleClass="contenedorProducto">
                            <children>
                               <VBox alignment="CENTER" layoutX="53.0" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
                                  <children>
@@ -196,7 +196,7 @@
                               </Label>
                            </children>
                         </Pane>
-                        <Pane prefHeight="450.0" prefWidth="240.0" styleClass="contenedorProducto">
+                        <Pane fx:id="B_Hamlet" prefHeight="450.0" prefWidth="240.0" styleClass="contenedorProducto">
                            <children>
                               <VBox alignment="CENTER" layoutX="53.0" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
                                  <children>
@@ -261,7 +261,7 @@
                               </Label>
                            </children>
                         </Pane>
-                        <Pane prefHeight="450.0" prefWidth="240.0" styleClass="contenedorProducto">
+                        <Pane fx:id="B_Principito" prefHeight="450.0" prefWidth="240.0" styleClass="contenedorProducto">
                            <children>
                               <VBox alignment="CENTER" layoutX="53.0" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
                                  <children>
@@ -375,7 +375,7 @@
                                     </Text>
                                  </children>
                               </VBox>
-                              <ImageView fx:id="e1" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="e1" fitHeight="25.0" fitWidth="25.0" onMouseClicked="#eliminarDeCarrito" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Images/Icono-remove.png" />
                                  </image>
@@ -412,7 +412,7 @@
                                     </Text>
                                  </children>
                               </VBox>
-                              <ImageView fx:id="e2" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="e2" fitHeight="25.0" fitWidth="25.0" onMouseClicked="#eliminarDeCarrito" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Images/Icono-remove.png" />
                                  </image>
@@ -449,7 +449,7 @@
                                     </Text>
                                  </children>
                               </VBox>
-                              <ImageView fx:id="e3" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="e3" fitHeight="25.0" fitWidth="25.0" onMouseClicked="#eliminarDeCarrito" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Images/Icono-remove.png" />
                                  </image>
@@ -486,7 +486,7 @@
                                     </Text>
                                  </children>
                               </VBox>
-                              <ImageView fx:id="e4" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="e4" fitHeight="25.0" fitWidth="25.0" onMouseClicked="#eliminarDeCarrito" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Images/Icono-remove.png" />
                                  </image>
