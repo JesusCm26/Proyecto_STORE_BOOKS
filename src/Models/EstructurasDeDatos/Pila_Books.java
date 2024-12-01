@@ -1,7 +1,9 @@
 package Models.EstructurasDeDatos;
 
 import Models.Nodos.Nodo_Book;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -188,16 +190,49 @@ public class Pila_Books {
 
             for (Nodo_Book book : pilaC) {
                 writer.write(book.getIdPropietario() + ", ");
-                writer.write(book.getTitulo()+ ", ");
-                writer.write(book.getAutor()+ ", ");
-                writer.write(book.getDescripcion()+ ", ");
-                writer.write(book.getPrecio()+ ", ");
+                writer.write(book.getTitulo() + ", ");
+                writer.write(book.getAutor() + ", ");
+                writer.write(book.getDescripcion() + ", ");
+                writer.write(book.getPrecio() + ", ");
                 writer.write(book.getFechaPublicacion());
                 writer.newLine();
             }
 
         } catch (IOException e) {
             System.out.println("Error al guardar los datos en el archivo: Archivo_Books_Carrito.txt: " + e.getMessage());
+        }
+    }
+
+    public void cargarBooks() {
+
+        String direccion = System.getProperty("user.dir") + "\\src\\ArchivosBase_TXT\\Archivo_Books_Carrito.txt";
+
+        Path archivo = Paths.get(direccion);
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(archivo.toFile()))) {
+
+            String linea;
+            if (!pilaC.isEmpty()) {
+                pilaC.clear();
+            }
+            while ((linea = reader.readLine()) != null) {
+
+                String[] atributos = linea.split(", ");
+
+                int idPropietario = Integer.parseInt(atributos[0]);
+                String titulo = atributos[1];
+                String autor = atributos[2];
+                String descripcion = atributos[3];
+                float precio = Float.parseFloat(atributos[4]);
+                String fechaPublicacion = atributos[5];
+
+                Nodo_Book book = new Nodo_Book(idPropietario, titulo, autor, descripcion, precio, fechaPublicacion);
+
+                setPush(book);
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error al cargar los datos desde Archivo_Books_Carrito.txt: " + e.getMessage());
         }
     }
 }
