@@ -194,7 +194,8 @@ public class Pila_Books {
                 writer.write(book.getAutor() + ", ");
                 writer.write(book.getDescripcion() + ", ");
                 writer.write(book.getPrecio() + ", ");
-                writer.write(book.getFechaPublicacion());
+                writer.write(book.getFechaPublicacion() + ", ");
+                writer.write(book.getURL_IMAGE());
                 writer.newLine();
             }
 
@@ -225,8 +226,9 @@ public class Pila_Books {
                 String descripcion = atributos[3];
                 float precio = Float.parseFloat(atributos[4]);
                 String fechaPublicacion = atributos[5];
+                String URL_IMAGE = atributos[6];
 
-                Nodo_Book book = new Nodo_Book(idPropietario, titulo, autor, descripcion, precio, fechaPublicacion);
+                Nodo_Book book = new Nodo_Book(idPropietario, titulo, autor, descripcion, precio, fechaPublicacion, URL_IMAGE);
 
                 setPush(book);
             }

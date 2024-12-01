@@ -8,14 +8,16 @@ public class Nodo_Book {
     private String descripcion;
     private float precio;
     private String fechaPublicacion;
+    private String URL_IMAGE;
 
-    public Nodo_Book(int idPropietario, String titulo, String autor, String descripcion, float precio, String fechaPublicacion) {
+    public Nodo_Book(int idPropietario, String titulo, String autor, String descripcion, float precio, String fechaPublicacion, String URL_IMAGE) {
         this.idPropietario = idPropietario;
         this.titulo = titulo;
         this.autor = autor;
         this.descripcion = descripcion;
         this.precio = precio;
         this.fechaPublicacion = fechaPublicacion;
+        this.URL_IMAGE = URL_IMAGE;
     }
 
     public int getIdPropietario() {
@@ -64,6 +66,14 @@ public class Nodo_Book {
 
     public void setFechaPublicacion(String fechaPublicacion) {
         this.fechaPublicacion = fechaPublicacion;
+    }
+
+    public String getURL_IMAGE() {
+        return URL_IMAGE;
+    }
+
+    public void setURL_IMAGE(String URL_IMAGE) {
+        this.URL_IMAGE = URL_IMAGE;
     }
 
 }
