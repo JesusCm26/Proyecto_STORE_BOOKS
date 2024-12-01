@@ -118,7 +118,7 @@ public class Controller_View_Login implements Initializable {
 
                     Controller_View_Principal controller = loader.getController();
                     controller.txt_user.setText(buscar.getCorreo());
-
+                    controller.idUsuario = buscar.getIdentificacion();
                     Scene scene = new Scene(root);
                     Stage stage = new Stage();
 

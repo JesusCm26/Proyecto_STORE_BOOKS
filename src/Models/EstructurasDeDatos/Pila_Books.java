@@ -140,13 +140,13 @@ public class Pila_Books {
             } else {
                 alert.setAlertType(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Aviso.");
-                alert.setContentText("La camiseta no existe.");
+                alert.setContentText("El libro no existe.");
                 alert.showAndWait();
             }
         } else {
             alert.setAlertType(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Aviso.");
-            alert.setContentText("No hay camisetas registradas");
+            alert.setContentText("No hay libros registradas");
             alert.showAndWait();
         }
     }
@@ -191,8 +191,7 @@ public class Pila_Books {
             for (Nodo_Book book : pilaC) {
                 writer.write(book.getIdPropietario() + ", ");
                 writer.write(book.getTitulo() + ", ");
-                writer.write(book.getAutor() + ", ");
-                writer.write(book.getDescripcion() + ", ");
+                writer.write(book.getAutor() + ", ");                
                 writer.write(book.getPrecio() + ", ");
                 writer.write(book.getFechaPublicacion() + ", ");
                 writer.write(book.getURL_IMAGE());
@@ -223,12 +222,11 @@ public class Pila_Books {
                 int idPropietario = Integer.parseInt(atributos[0]);
                 String titulo = atributos[1];
                 String autor = atributos[2];
-                String descripcion = atributos[3];
-                float precio = Float.parseFloat(atributos[4]);
-                String fechaPublicacion = atributos[5];
-                String URL_IMAGE = atributos[6];
+                float precio = Float.parseFloat(atributos[3]);
+                String fechaPublicacion = atributos[4];
+                String URL_IMAGE = atributos[5];
 
-                Nodo_Book book = new Nodo_Book(idPropietario, titulo, autor, descripcion, precio, fechaPublicacion, URL_IMAGE);
+                Nodo_Book book = new Nodo_Book(idPropietario, titulo, autor, precio, fechaPublicacion, URL_IMAGE);
 
                 setPush(book);
             }
@@ -249,8 +247,7 @@ public class Pila_Books {
             for (Nodo_Book book : pilaFav) {
                 writer.write(book.getIdPropietario() + ", ");
                 writer.write(book.getTitulo() + ", ");
-                writer.write(book.getAutor() + ", ");
-                writer.write(book.getDescripcion() + ", ");
+                writer.write(book.getAutor() + ", ");                
                 writer.write(book.getPrecio() + ", ");
                 writer.write(book.getFechaPublicacion() + ", ");
                 writer.write(book.getURL_IMAGE());
@@ -281,12 +278,11 @@ public class Pila_Books {
                 int idPropietario = Integer.parseInt(atributos[0]);
                 String titulo = atributos[1];
                 String autor = atributos[2];
-                String descripcion = atributos[3];
-                float precio = Float.parseFloat(atributos[4]);
-                String fechaPublicacion = atributos[5];
-                String URL_IMAGE = atributos[6];
+                float precio = Float.parseFloat(atributos[3]);
+                String fechaPublicacion = atributos[4];
+                String URL_IMAGE = atributos[5];
 
-                Nodo_Book book = new Nodo_Book(idPropietario, titulo, autor, descripcion, precio, fechaPublicacion, URL_IMAGE);
+                Nodo_Book book = new Nodo_Book(idPropietario, titulo, autor, precio, fechaPublicacion, URL_IMAGE);
 
                 setPush(book);
             }

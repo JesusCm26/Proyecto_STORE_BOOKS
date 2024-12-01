@@ -20,6 +20,15 @@ public class Nodo_Book {
         this.URL_IMAGE = URL_IMAGE;
     }
 
+    public Nodo_Book(int idPropietario, String titulo, String autor, float precio, String fechaPublicacion, String URL_IMAGE) {
+        this.idPropietario = idPropietario;
+        this.titulo = titulo;
+        this.autor = autor;
+        this.descripcion = "";
+        this.precio = precio;
+        this.fechaPublicacion = fechaPublicacion;
+        this.URL_IMAGE = URL_IMAGE;
+    }
     public int getIdPropietario() {
         return idPropietario;
     }
