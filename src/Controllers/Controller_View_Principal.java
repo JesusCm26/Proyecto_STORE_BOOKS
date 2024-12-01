@@ -466,7 +466,167 @@ public class Controller_View_Principal implements Initializable {
                     throw new AssertionError();
             }
         } else if (event.getSource() == btnAgregarFGN) {
+            Nodo_Book book = null;
 
+            switch (imagenGN.getUserData().toString()) {
+                case "/Images/LIBRO1.jpg":
+
+                    book = new Nodo_Book(
+                            idUsuario, "Juego de Tronos", "George Martin",
+                            "Juego de Tronos es la primera entrega de la serie"
+                            + "\nCanción de Hielo y Fuego escrita por George R. R. Martin"
+                            + "\nLa historia se desarrolla en los Siete Reinos de Poniente donde "
+                            + "\ndiferentes casas nobles gobiernan las regiones."
+                            + "\n\nTras un largo verano el invierno se acerca a los Siete Reinos."
+                            + "\nLord Eddard Stark señor de Invernalia deja sus dominios para"
+                            + "\nunirse a la corte de su amigo el rey Robert Baratheon llamado el Usurpador.",
+                            70000, "08/1996", "/Images/LIBRO1.jpg");
+
+                    if (pilaB.getPilaFav().isEmpty()) {
+                        pilaB.setPushFav(book);
+                        pilaB.guardarBooks_Fav();
+                        book = pilaB.getBook(idUsuario, "Juego de Tronos");
+                        if (book != null) {
+                            pilaB.popBook(idUsuario, "Juego de Tronos");
+                            pilaB.guardarBooks();
+                        }
+                        Alert(Alert.AlertType.INFORMATION, "INFO:", "Libro agregado de forma exitosa al panel de favoritos...!");
+                    } else {
+                        if (pilaB.getPilaFav().indexOf(book) != -1) {
+                            Alert(Alert.AlertType.WARNING, "INFO:", "Este libro ya ha sido agregado al panel de favoritos"
+                                    + "\nNo se pudo agrear.");
+                        } else {
+                            pilaB.setPushFav(book);
+                            pilaB.guardarBooks_Fav();
+                            book = pilaB.getBook(idUsuario, "Juego de Tronos");
+                            if (book != null) {
+                                pilaB.popBook(idUsuario, "Juego de Tronos");
+                                pilaB.guardarBooks();
+                            }
+                            Alert(Alert.AlertType.INFORMATION, "INFO:", "Libro agregado de forma exitosa al panel de favoritos...!");
+                        }
+                    }
+                    break;
+                case "/Images/LIBRO2.jpg":
+
+                    book = new Nodo_Book(
+                            idUsuario, "Divergente", "Veronica Roth",
+                            "Divergente es una novela distópica escrita por Veronica Roth12345."
+                            + "\nLa historia se desarrolla en un Chicago post-apocalíptico"
+                            + "\ndonde la sociedad está dividida en cinco facciones: Verdad"
+                            + "\nAbnegación Osadía Cordialidad y Erudición1. La protagonista Beatrice Prior "
+                            + "\ndebe elegir a qué facción pertenecer pero su identidad misma socava la estricta"
+                            + "\nestructura social de su sociedad.",
+                            95000, "04/2011", "/Images/LIBRO2.jpg");
+
+                    if (pilaB.getPilaFav().isEmpty()) {
+                        pilaB.setPushFav(book);
+                        pilaB.guardarBooks_Fav();
+                        book = pilaB.getBook(idUsuario, "Divergente");
+                        if (book != null) {
+                            pilaB.popBook(idUsuario, "Divergente");
+                            pilaB.guardarBooks();
+                        }
+                        Alert(Alert.AlertType.INFORMATION, "INFO:", "Libro agregado de forma exitosa al panel de favoritos...!");
+                    } else {
+                        if (pilaB.getPilaFav().indexOf(book) != -1) {
+                            Alert(Alert.AlertType.WARNING, "INFO:", "Este libro ya ha sido agregado al panel de favoritos"
+                                    + "\nNo se pudo agrear.");
+                        } else {
+                            pilaB.setPushFav(book);
+                            pilaB.guardarBooks_Fav();
+                            book = pilaB.getBook(idUsuario, "Divergente");
+                            if (book != null) {
+                                pilaB.popBook(idUsuario, "Divergente");
+                                pilaB.guardarBooks();
+                            }
+                            Alert(Alert.AlertType.INFORMATION, "INFO:", "Libro agregado de forma exitosa al panel de favoritos...!");
+                        }
+                    }
+                    break;
+                case "/Images/LIBRO3.jpg":
+
+                    book = new Nodo_Book(
+                            idUsuario, "Principito", "Antonie de Saint - Exupery",
+                            "El principito es un cuento poético que viene acompañado de ilustraciones"
+                            + "\n hechas con acuarelas por el mismo Saint-Exupéry. En él, un piloto "
+                            + "\nse encuentra perdido en el desierto del Sahara después de que su avión"
+                            + "\nsufriera una avería, pero para su sorpresa, es allí donde conoce a un pequeño"
+                            + "\npríncipe proveniente de otro planeta. La historia tiene una temática filosófica, "
+                            + "\ndonde se incluyen críticas sociales dirigidas a la «extrañeza» con la que los "
+                            + "\nadultos ven las cosas. Estas críticas a las cosas «importantes» y al mundo de los "
+                            + "\nadultos van apareciendo en el libro a lo largo de la narración.",
+                            80000, "04/2011", "/Images/LIBRO3.jpg");
+
+                    if (pilaB.getPilaFav().isEmpty()) {
+                        pilaB.setPushFav(book);
+                        pilaB.guardarBooks_Fav();
+                        book = pilaB.getBook(idUsuario, "Principito");
+                        if (book != null) {
+                            pilaB.popBook(idUsuario, "Principito");
+                            pilaB.guardarBooks();
+                        }
+                        Alert(Alert.AlertType.INFORMATION, "INFO:", "Libro agregado de forma exitosa al panel de favoritos...!");
+                    } else {
+                        if (pilaB.getPilaFav().indexOf(book) != -1) {
+                            Alert(Alert.AlertType.WARNING, "INFO:", "Este libro ya ha sido agregado al panel de favoritos"
+                                    + "\nNo se pudo agrear.");
+                        } else {
+                            pilaB.setPushFav(book);
+                            pilaB.guardarBooks_Fav();
+                            book = pilaB.getBook(idUsuario, "Principito");
+                            if (book != null) {
+                                pilaB.popBook(idUsuario, "Principito");
+                                pilaB.guardarBooks();
+                            }
+                            Alert(Alert.AlertType.INFORMATION, "INFO:", "Libro agregado de forma exitosa al panel de favoritos...!");
+                        }
+                    }
+                    break;
+                case "/Images/LIBRO4.jpg":
+
+                    book = new Nodo_Book(
+                            idUsuario, "Hamlet", "William Shakespeare",
+                            "La tragedia de Hamlet, príncipe de Dinamarca (título original en inglés: The Tragical History of Hamlet,"
+                            + "\nPrince of Denmark), o simplemente Hamlet, es una tragedia del dramaturgo "
+                            + "\ninglés William Shakespeare.1​ Su autor probablemente basó Hamlet en dos "
+                            + "\nfuentes: la leyenda de Amleth y una perdida obra isabelina conocida hoy como "
+                            + "\nUr-Hamlet o Hamlet original (hecho que se deduce de otros textos)."
+                            + "\n\n"
+                            + "\nEl año concreto en que fue escrita sigue aún en disputa, cuestión que se complica porque "
+                            + "\nse han conservado a la época actual tres versiones tempranas de la obra,"
+                            + "\nconocidas como First Quarto (Q1), Second Quarto (Q2) y el First Folio (F1); "
+                            + "\ncada cual única, puesto que poseen líneas —e incluso escenas— diferentes o ausentes entre ellas. Dichas obras posiblemente fueron compuestas en algún momento entre 1599 y 1601.",
+                            50000, "1623", "/Images/LIBRO4.jpg");
+
+                    if (pilaB.getPilaFav().isEmpty()) {
+                        pilaB.setPushFav(book);
+                        pilaB.guardarBooks_Fav();
+                        book = pilaB.getBook(idUsuario, "Hamlet");
+                        if (book != null) {
+                            pilaB.popBook(idUsuario, "Hamlet");
+                            pilaB.guardarBooks();
+                        }
+                        Alert(Alert.AlertType.INFORMATION, "INFO:", "Libro agregado de forma exitosa al panel de favoritos...!");
+                    } else {
+                        if (pilaB.getPilaFav().indexOf(book) != -1) {
+                            Alert(Alert.AlertType.WARNING, "INFO:", "Este libro ya ha sido agregado al panel de favoritos"
+                                    + "\nNo se pudo agrear.");
+                        } else {
+                            pilaB.setPushFav(book);
+                            pilaB.guardarBooks_Fav();
+                            book = pilaB.getBook(idUsuario, "Hamlet");
+                            if (book != null) {
+                                pilaB.popBook(idUsuario, "Hamlet");
+                                pilaB.guardarBooks();
+                            }
+                            Alert(Alert.AlertType.INFORMATION, "INFO:", "Libro agregado de forma exitosa al panel de favoritos...!");
+                        }
+                    }
+                    break;
+                default:
+                    throw new AssertionError();
+            }
         }
     }
 
