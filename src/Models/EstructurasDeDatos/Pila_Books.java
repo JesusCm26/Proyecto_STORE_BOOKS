@@ -262,4 +262,37 @@ public class Pila_Books {
         }
     }
     
+    public void cargarBooks_Fav() {
+
+        String direccion = System.getProperty("user.dir") + "\\src\\ArchivosBase_TXT\\Archivo_Books_Favoritos.txt";
+
+        Path archivo = Paths.get(direccion);
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(archivo.toFile()))) {
+
+            String linea;
+            if (!pilaFav.isEmpty()) {
+                pilaFav.clear();
+            }
+            while ((linea = reader.readLine()) != null) {
+
+                String[] atributos = linea.split(", ");
+
+                int idPropietario = Integer.parseInt(atributos[0]);
+                String titulo = atributos[1];
+                String autor = atributos[2];
+                String descripcion = atributos[3];
+                float precio = Float.parseFloat(atributos[4]);
+                String fechaPublicacion = atributos[5];
+                String URL_IMAGE = atributos[6];
+
+                Nodo_Book book = new Nodo_Book(idPropietario, titulo, autor, descripcion, precio, fechaPublicacion, URL_IMAGE);
+
+                setPush(book);
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error al cargar los datos desde Archivo_Books_Favoritos.txt: " + e.getMessage());
+        }
+    }
 }
