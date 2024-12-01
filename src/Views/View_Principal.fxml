@@ -544,7 +544,7 @@
                <content>
                   <FlowPane fx:id="containerBooksF" alignment="TOP_CENTER" columnHalignment="CENTER" prefHeight="330.0" prefWidth="338.0" vgap="10.0">
                      <children>
-                        <HBox fx:id="bookFav1" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="17.0" styleClass="bookCarrito">
+                        <HBox fx:id="F_JuegodeTronos" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="17.0" styleClass="bookCarrito">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -581,7 +581,7 @@
                               <Insets left="10.0" />
                            </padding>
                         </HBox>
-                        <HBox fx:id="bookFav2" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="17.0" styleClass="bookCarrito">
+                        <HBox fx:id="F_Divergente" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="17.0" styleClass="bookCarrito">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -618,7 +618,7 @@
                               <Insets left="10.0" />
                            </padding>
                         </HBox>
-                        <HBox fx:id="bookFav3" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="17.0" styleClass="bookCarrito">
+                        <HBox fx:id="F_Hamlet" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="17.0" styleClass="bookCarrito">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -655,7 +655,7 @@
                               <Insets left="10.0" />
                            </padding>
                         </HBox>
-                        <HBox fx:id="bookFav4" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="17.0" styleClass="bookCarrito">
+                        <HBox fx:id="F_Principito" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="17.0" styleClass="bookCarrito">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
