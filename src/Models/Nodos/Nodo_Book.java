@@ -1,24 +1,21 @@
 package Models.Nodos;
 
 public class Nodo_Book {
-    
+
     private int idPropietario;
     private String titulo;
     private String autor;
     private String descripcion;
     private float precio;
     private String fechaPublicacion;
-    private Nodo_Book sig, ant;
 
-    public Nodo_Book(int idPropietario, String titulo, String autor, String descripcion, float precio, String fechaPublicacion, Nodo_Book sig, Nodo_Book ant) {
+    public Nodo_Book(int idPropietario, String titulo, String autor, String descripcion, float precio, String fechaPublicacion) {
         this.idPropietario = idPropietario;
         this.titulo = titulo;
         this.autor = autor;
         this.descripcion = descripcion;
         this.precio = precio;
         this.fechaPublicacion = fechaPublicacion;
-        this.sig = sig;
-        this.ant = ant;
     }
 
     public int getIdPropietario() {
@@ -69,20 +66,4 @@ public class Nodo_Book {
         this.fechaPublicacion = fechaPublicacion;
     }
 
-    public Nodo_Book getSig() {
-        return sig;
-    }
-
-    public void setSig(Nodo_Book sig) {
-        this.sig = sig;
-    }
-
-    public Nodo_Book getAnt() {
-        return ant;
-    }
-
-    public void setAnt(Nodo_Book ant) {
-        this.ant = ant;
-    }
-    
 }
