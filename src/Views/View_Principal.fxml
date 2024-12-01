@@ -62,7 +62,7 @@
             </AnchorPane>
          </top>
          <center>
-            <AnchorPane fx:id="catalogo" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <AnchorPane fx:id="panelCatalogo" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
                   <FlowPane fx:id="containerCat" alignment="CENTER" hgap="30.0" prefHeight="577.0" prefWidth="1102.0">
                      <children>
@@ -327,6 +327,91 @@
                            </children>
                         </Pane>
                      </children></FlowPane>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+      <BorderPane fx:id="panelDeDetalles" prefHeight="200.0" prefWidth="200.0" stylesheets="@../Style/StyleSheet.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="85.0">
+         <left>
+            <AnchorPane prefHeight="200.0" prefWidth="320.0" style="-fx-background-color: #F8D251;" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="btnComprarGN" layoutX="60.0" layoutY="349.0" mnemonicParsing="false" onAction="#eventAction" styleClass="btn_login" text="Comprar" textFill="WHITE" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0">
+                     <font>
+                        <Font name="SansSerif Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnAgregarCGN" layoutX="70.0" layoutY="419.0" mnemonicParsing="false" onAction="#eventAction" styleClass="btn_login" text="Agregar al carrito" textFill="WHITE">
+                     <font>
+                        <Font name="SansSerif Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnAgregarFGN" layoutX="70.0" layoutY="489.0" mnemonicParsing="false" onAction="#eventAction" styleClass="btn_login" text="Agregar a favoritos" textFill="WHITE">
+                     <font>
+                        <Font name="SansSerif Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Text fx:id="txtPrecioGN" layoutX="117.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00,000 COP" AnchorPane.leftAnchor="121.0" AnchorPane.rightAnchor="121.0">
+                     <font>
+                        <Font name="SansSerif Bold" size="14.0" />
+                     </font>
+                  </Text>
+                  <ImageView fx:id="imagenGN" fitHeight="200.0" fitWidth="135.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="92.0" AnchorPane.topAnchor="85.0">
+                     <image>
+                        <Image url="@../Images/LIBRO1.jpg" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="txtTituloGN" layoutX="79.0" layoutY="57.10546875" strokeType="OUTSIDE" strokeWidth="0.0" text="TITULO LIBRO" AnchorPane.topAnchor="39.0">
+                     <font>
+                        <Font name="SansSerif Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <ImageView fx:id="btnAtras" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="12.0">
+                     <image>
+                        <Image url="@../Images/Icono-remove.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </left>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Text layoutX="61.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DESCRIPCIÓN" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="40.0">
+                     <font>
+                        <Font name="SansSerif Bold" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="txtContextGN" layoutX="41.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CONTEXTO" AnchorPane.leftAnchor="40.0">
+                     <font>
+                        <Font name="SansSerif Regular" size="15.0" />
+                     </font>
+                  </Text>
+                  <Pane layoutX="51.0" layoutY="531.0" prefHeight="2.0" prefWidth="700.0" style="-fx-background-color: #000000;" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="40.0" />
+                  <Text layoutX="41.0" layoutY="510.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Autor:" AnchorPane.leftAnchor="46.0">
+                     <font>
+                        <Font name="SansSerif Bold" size="13.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="txtAutorGN" layoutX="96.0" layoutY="510.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NULL" AnchorPane.leftAnchor="96.0">
+                     <font>
+                        <Font name="SansSerif Regular" size="12.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="296.0" layoutY="510.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/">
+                     <font>
+                        <Font name="SansSerif Regular" size="20.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="321.0" layoutY="510.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Publicado en:">
+                     <font>
+                        <Font name="SansSerif Bold" size="13.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="txtPublicadoGN" layoutX="416.0" layoutY="510.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NULL">
+                     <font>
+                        <Font name="SansSerif Regular" size="12.0" />
+                     </font>
+                  </Text>
                </children>
             </AnchorPane>
          </center>
