@@ -351,7 +351,7 @@
                <content>
                   <FlowPane alignment="TOP_CENTER" columnHalignment="CENTER" prefHeight="330.0" prefWidth="338.0" vgap="10.0">
                      <children>
-                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="17.0" styleClass="bookCarrito">
+                        <HBox fx:id="bookCar1" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="17.0" styleClass="bookCarrito">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -388,7 +388,7 @@
                               <Insets left="10.0" />
                            </padding>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="17.0" styleClass="bookCarrito">
+                        <HBox fx:id="bookCar2" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="17.0" styleClass="bookCarrito">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -425,7 +425,7 @@
                               <Insets left="10.0" />
                            </padding>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="17.0" styleClass="bookCarrito">
+                        <HBox fx:id="bookCar3" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="17.0" styleClass="bookCarrito">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -462,7 +462,7 @@
                               <Insets left="10.0" />
                            </padding>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="17.0" styleClass="bookCarrito">
+                        <HBox fx:id="bookCar4" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="17.0" styleClass="bookCarrito">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -507,16 +507,199 @@
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL:">
                      <font>
-                        <Font name="SansSerif Bold" size="13.0" />
+                        <Font name="SansSerif Bold" size="15.0" />
                      </font>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="00,000 COP" />
+                  <Text fx:id="txtTotal" strokeType="OUTSIDE" strokeWidth="0.0" text="00,000 COP">
+                     <font>
+                        <Font name="SansSerif Regular" size="14.0" />
+                     </font></Text>
                </children>
             </HBox>
          </children>
          <padding>
             <Insets top="10.0" />
          </padding>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
+      <VBox id="panelCarrito" fx:id="panelFavoritos" alignment="TOP_CENTER" layoutX="654.0" layoutY="70.0" prefHeight="450.0" prefWidth="340.0" spacing="6.0" stylesheets="@../Style/StyleSheet.css" visible="false" AnchorPane.rightAnchor="40.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="65.0" prefWidth="340.0" style="-fx-background-color: #40C340; -fx-background-radius: 10 10 0 0;">
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="FAVORITOS">
+                     <font>
+                        <Font name="SansSerif Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/Star2.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <ScrollPane hbarPolicy="NEVER" prefHeight="372.0" prefWidth="338.0" vbarPolicy="NEVER">
+               <content>
+                  <FlowPane alignment="TOP_CENTER" columnHalignment="CENTER" prefHeight="330.0" prefWidth="338.0" vgap="10.0">
+                     <children>
+                        <HBox fx:id="bookFav1" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="17.0" styleClass="bookCarrito">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <children>
+                              <ImageView fitHeight="52.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/LIBRO1.jpg" />
+                                 </image>
+                              </ImageView>
+                              <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="12.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Juego de Tronos">
+                                       <font>
+                                          <Font name="SansSerif Bold" size="13.0" />
+                                       </font>
+                                    </Text>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="70,000  COP">
+                                       <font>
+                                          <Font name="SansSerif Bold" size="13.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" onMouseClicked="#pasarAlCarrtio" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/Icono-checked.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="95.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </HBox>
+                        <HBox fx:id="bookFav2" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="17.0" styleClass="bookCarrito">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <children>
+                              <ImageView fitHeight="52.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/LIBRO2.jpg" />
+                                 </image>
+                              </ImageView>
+                              <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="12.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Divergente">
+                                       <font>
+                                          <Font name="SansSerif Bold" size="13.0" />
+                                       </font>
+                                    </Text>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="95,000  COP">
+                                       <font>
+                                          <Font name="SansSerif Bold" size="13.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" onMouseClicked="#pasarAlCarrtio" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/Icono-checked.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="95.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </HBox>
+                        <HBox fx:id="bookFav3" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="17.0" styleClass="bookCarrito">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <children>
+                              <ImageView fitHeight="52.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/LIBRO4.jpg" />
+                                 </image>
+                              </ImageView>
+                              <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="12.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hamlet">
+                                       <font>
+                                          <Font name="SansSerif Bold" size="13.0" />
+                                       </font>
+                                    </Text>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="50,000  COP">
+                                       <font>
+                                          <Font name="SansSerif Bold" size="13.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" onMouseClicked="#pasarAlCarrtio" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/Icono-checked.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="95.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </HBox>
+                        <HBox fx:id="bookFav4" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="17.0" styleClass="bookCarrito">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <children>
+                              <ImageView fitHeight="52.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/LIBRO3.jpg" />
+                                 </image>
+                              </ImageView>
+                              <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="12.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="El Principito">
+                                       <font>
+                                          <Font name="SansSerif Bold" size="13.0" />
+                                       </font>
+                                    </Text>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="80,000  COP">
+                                       <font>
+                                          <Font name="SansSerif Bold" size="13.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" onMouseClicked="#pasarAlCarrtio" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/Icono-checked.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="95.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </FlowPane>
+               </content>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </ScrollPane>
+         </children>
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
