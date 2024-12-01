@@ -351,7 +351,7 @@
                <content>
                   <FlowPane fx:id="containerBooksC" alignment="TOP_CENTER" columnHalignment="CENTER" prefHeight="330.0" prefWidth="338.0" vgap="10.0">
                      <children>
-                        <HBox fx:id="bookCar1" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="17.0" styleClass="bookCarrito">
+                        <HBox fx:id="C_JuegodeTronos" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="17.0" styleClass="bookCarrito">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -388,7 +388,7 @@
                               <Insets left="10.0" />
                            </padding>
                         </HBox>
-                        <HBox fx:id="bookCar2" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="17.0" styleClass="bookCarrito">
+                        <HBox fx:id="C_Divergente" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="17.0" styleClass="bookCarrito">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -425,7 +425,7 @@
                               <Insets left="10.0" />
                            </padding>
                         </HBox>
-                        <HBox fx:id="bookCar3" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="17.0" styleClass="bookCarrito">
+                        <HBox fx:id="C_Hamlet" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="17.0" styleClass="bookCarrito">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -462,7 +462,7 @@
                               <Insets left="10.0" />
                            </padding>
                         </HBox>
-                        <HBox fx:id="bookCar4" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="17.0" styleClass="bookCarrito">
+                        <HBox fx:id="C_Principito" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="17.0" styleClass="bookCarrito">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -704,5 +704,15 @@
             <Insets />
          </opaqueInsets>
       </VBox>
+      <Label fx:id="NO_HAY_CAR" focusTraversable="false" layoutX="690.0" layoutY="300.0" text="No hay libros en el carrito" visible="false" AnchorPane.rightAnchor="166.0">
+         <font>
+            <Font name="SansSerif Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="NO_HAY_FAV" focusTraversable="false" layoutX="770.0" layoutY="300.0" text="No hay libros en favoritos" visible="false" AnchorPane.rightAnchor="86.0">
+         <font>
+            <Font name="SansSerif Bold" size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
