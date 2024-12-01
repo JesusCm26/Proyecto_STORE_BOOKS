@@ -5,7 +5,7 @@ import java.util.Stack;
 import javafx.scene.control.Alert;
 
 public class Pila_Books {
-    
+
     private final Stack<Nodo_Book> pilaC;
     private final Stack<Nodo_Book> pilaFav;
 
@@ -21,7 +21,7 @@ public class Pila_Books {
     public Stack<Nodo_Book> getPilaFav() {
         return pilaFav;
     }
- 
+
     //Metodos PilaC o pila para elementos del carrito
     public void setPush(Nodo_Book b) {
         int pos = pilaC.indexOf(b);
@@ -35,28 +35,28 @@ public class Pila_Books {
     public Stack<Nodo_Book> getBooks(int id) {
         Stack<Nodo_Book> pila = new Stack<>();
         for (Nodo_Book aux : pilaC) {
-            if (aux.getIdPropietario()== id) {
+            if (aux.getIdPropietario() == id) {
                 pila.push(aux);
             }
         }
         return pila;
     }
 
-    public Nodo_Book getBook(int id) {
+    public Nodo_Book getBook(int id, String titulo) {
         for (Nodo_Book aux : pilaC) {
-            if (aux.getIdPropietario() == id) {
+            if (aux.getIdPropietario() == id && aux.getTitulo().equals(titulo)) {
                 return aux;
             }
         }
         return null;
     }
 
-    public void popBook(int id) {
+    public void popBook(int id, String titulo) {
         Alert alert = new Alert(Alert.AlertType.NONE);
 
         Nodo_Book aux = null;
         if (!pilaC.empty()) {
-            aux = getBook(id);
+            aux = getBook(id, titulo);
             if ((aux != null) && (pilaC.remove(aux))) {
                 alert.setAlertType(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Aviso.");
@@ -90,7 +90,7 @@ public class Pila_Books {
             return caux;
         }
     }
-    
+
     public void setPushFav(Nodo_Book b) {
         int pos = pilaFav.indexOf(b);
         if (pos == -1) {
@@ -103,28 +103,28 @@ public class Pila_Books {
     public Stack<Nodo_Book> getBooksFav(int id) {
         Stack<Nodo_Book> pila = new Stack<>();
         for (Nodo_Book aux : pilaFav) {
-            if (aux.getIdPropietario()== id) {
+            if (aux.getIdPropietario() == id) {
                 pila.push(aux);
             }
         }
         return pila;
     }
 
-    public Nodo_Book getBookFav(int id) {
+    public Nodo_Book getBookFav(int id, String titulo) {
         for (Nodo_Book aux : pilaFav) {
-            if (aux.getIdPropietario() == id) {
+            if (aux.getIdPropietario() == id && aux.getTitulo().equals(titulo)) {
                 return aux;
             }
         }
         return null;
     }
 
-    public void popBookFav(int id) {
+    public void popBookFav(int id, String titulo) {
         Alert alert = new Alert(Alert.AlertType.NONE);
 
         Nodo_Book aux = null;
         if (!pilaFav.empty()) {
-            aux = getBook(id);
+            aux = getBook(id, titulo);
             if ((aux != null) && (pilaFav.remove(aux))) {
                 alert.setAlertType(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Aviso.");
@@ -158,7 +158,7 @@ public class Pila_Books {
             return caux;
         }
     }
-    
+
     public void eliminar(Stack<Nodo_Book> pila, int id) {
         Stack<Nodo_Book> temp = new Stack<>();
 
@@ -172,5 +172,5 @@ public class Pila_Books {
             pila.push(temp.pop());
         }
     }
-    
+
 }
