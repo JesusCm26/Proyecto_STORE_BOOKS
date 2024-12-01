@@ -1,6 +1,11 @@
 package Models.EstructurasDeDatos;
 
 import Models.Nodos.Nodo_Book;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Stack;
 import javafx.scene.control.Alert;
 
@@ -173,4 +178,26 @@ public class Pila_Books {
         }
     }
 
+    public void guardarBooks() {
+
+        String direccion = System.getProperty("user.dir") + "\\src\\ArchivosBase_TXT\\Archivo_Books_Carrito.txt";
+
+        Path archivo = Paths.get(direccion);
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo.toFile(), false))) {
+
+            for (Nodo_Book book : pilaC) {
+                writer.write(book.getIdPropietario() + ", ");
+                writer.write(book.getTitulo()+ ", ");
+                writer.write(book.getAutor()+ ", ");
+                writer.write(book.getDescripcion()+ ", ");
+                writer.write(book.getPrecio()+ ", ");
+                writer.write(book.getFechaPublicacion());
+                writer.newLine();
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error al guardar los datos en el archivo: Archivo_Books_Carrito.txt: " + e.getMessage());
+        }
+    }
 }
