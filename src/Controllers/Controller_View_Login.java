@@ -1,6 +1,7 @@
 package Controllers;
 
 import Models.EstructurasDeDatos.Lista_Users;
+import Models.EstructurasDeDatos.Pila_Books;
 import Models.ModeloDeDatos;
 import Models.Nodos.Nodo_User;
 import java.io.IOException;
@@ -24,6 +25,7 @@ import javafx.stage.WindowEvent;
 public class Controller_View_Login implements Initializable {
 
     private final Lista_Users listaU = ModeloDeDatos.obtenerInstancia().getListaU();
+    private final Pila_Books pilaB = ModeloDeDatos.obtenerInstancia().getPialB();
 
     @FXML
     private TextField txtUser;
@@ -37,6 +39,8 @@ public class Controller_View_Login implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         listaU.cargarUsuariosDesdeArchivo_TXT();
+        pilaB.cargarBooks();
+        pilaB.cargarBooks_Fav();
     }
 
     @FXML
@@ -106,7 +110,7 @@ public class Controller_View_Login implements Initializable {
             Nodo_User buscar = listaU.buscarEmail(txtUser.getText());
 
             if (buscar != null && buscar.getContrasena().equals(txtPass.getText())) {
-                Alert(Alert.AlertType.CONFIRMATION, "Información", "BIENVENIDO..!");
+                Alert(Alert.AlertType.CONFIRMATION, "Información", buscar.getNombre() + " BIENVENIDO..!");
 
                 try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/View_Principal.fxml"));
