@@ -26,9 +26,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -103,8 +105,6 @@ public class Controller_View_Principal implements Initializable {
     @FXML
     private Pane B_Principito;
     @FXML
-    private AnchorPane catalogo;
-    @FXML
     private Label NO_HAY_CAR;
     @FXML
     private Label NO_HAY_FAV;
@@ -124,6 +124,30 @@ public class Controller_View_Principal implements Initializable {
     private HBox F_Hamlet;
     @FXML
     private HBox F_Principito;
+    @FXML
+    private AnchorPane panelCatalogo;
+    @FXML
+    private BorderPane panelDeDetalles;
+    @FXML
+    private Button btnComprarGN;
+    @FXML
+    private Button btnAgregarCGN;
+    @FXML
+    private Button btnAgregarFGN;
+    @FXML
+    private Text txtPrecioGN;
+    @FXML
+    private ImageView imagenGN;
+    @FXML
+    private Text txtTituloGN;
+    @FXML
+    private Text txtContextGN;
+    @FXML
+    private Text txtAutorGN;
+    @FXML
+    private Text txtPublicadoGN;
+    @FXML
+    private ImageView btnAtras;
 
     /**
      * Initializes the controller class.
@@ -151,6 +175,11 @@ public class Controller_View_Principal implements Initializable {
         containerBooksF.getChildren().stream().map(node -> (HBox) node).forEachOrdered(newPane -> {
             elementosFavoritos.add(newPane);
         });
+
+        btnAtras.setOnMouseClicked((MouseEvent event) -> {
+            panelCatalogo.setVisible(true);
+            panelDeDetalles.setVisible(false);
+        });
     }
 
     public void Alert(Alert.AlertType alertType, String tit, String mj) {
@@ -168,7 +197,7 @@ public class Controller_View_Principal implements Initializable {
             if (paneOpcionesUser.isVisible()) {
                 panelCarrito.setVisible(false);
                 panelFavoritos.setVisible(false);
-            } 
+            }
         } else if (event.getSource() == btn_cerrarSesión) {
             closeWindow();
         } else if (event.getSource() == btn_carrito) {
@@ -176,6 +205,7 @@ public class Controller_View_Principal implements Initializable {
             if (panelCarrito.isVisible()) {
                 panelFavoritos.setVisible(false);
                 paneOpcionesUser.setVisible(false);
+                mostrarBooksC();
             } else {
                 NO_HAY_CAR.setVisible(false);
                 NO_HAY_FAV.setVisible(false);
@@ -185,11 +215,88 @@ public class Controller_View_Principal implements Initializable {
             if (panelFavoritos.isVisible()) {
                 panelCarrito.setVisible(false);
                 paneOpcionesUser.setVisible(false);
+                mostrarBooksF();
             } else {
                 NO_HAY_CAR.setVisible(false);
                 NO_HAY_FAV.setVisible(false);
             }
 
+        } else if (event.getSource() == btnDetalles1) {
+            Image ima = new Image(getClass().getResourceAsStream("/Images/LIBRO1.jpg"));
+            panelCatalogo.setVisible(!panelCatalogo.isVisible());
+            panelDeDetalles.setVisible(true);
+            if (!panelCatalogo.isVisible()) {
+                txtTituloGN.setText("Juego de Tronos");
+                imagenGN.setImage(ima);
+                txtPrecioGN.setText("70,000 COP");
+                txtContextGN.setText("Juego de Tronos es la primera entrega de la serie"
+                        + "\nCanción de Hielo y Fuego escrita por George R. R. Martin"
+                        + "\nLa historia se desarrolla en los Siete Reinos de Poniente donde "
+                        + "\ndiferentes casas nobles gobiernan las regiones."
+                        + "\n\nTras un largo verano el invierno se acerca a los Siete Reinos."
+                        + "\nLord Eddard Stark señor de Invernalia deja sus dominios para"
+                        + "\nunirse a la corte de su amigo el rey Robert Baratheon llamado el Usurpador.");
+                txtAutorGN.setText("George Martin");
+                txtPublicadoGN.setText("08/1996");
+            }
+        } else if (event.getSource() == btnDetalles2) {
+            Image ima = new Image(getClass().getResourceAsStream("/Images/LIBRO2.jpg"));
+            panelCatalogo.setVisible(!panelCatalogo.isVisible());
+            panelDeDetalles.setVisible(true);
+            if (!panelCatalogo.isVisible()) {
+                txtTituloGN.setText("Divergente");
+                imagenGN.setImage(ima);
+                txtPrecioGN.setText("95,000 COP");
+                txtContextGN.setText("Divergente es una novela distópica escrita por Veronica Roth12345."
+                        + "\nLa historia se desarrolla en un Chicago post-apocalíptico"
+                        + "\ndonde la sociedad está dividida en cinco facciones: Verdad"
+                        + "\nAbnegación Osadía Cordialidad y Erudición1. La protagonista Beatrice Prior "
+                        + "\ndebe elegir a qué facción pertenecer pero su identidad misma socava la estricta"
+                        + "\nestructura social de su sociedad.");
+                txtAutorGN.setText("Veronica Roth");
+                txtPublicadoGN.setText("04/2011");
+            }
+        } else if (event.getSource() == btnDetalles3) {
+            Image ima = new Image(getClass().getResourceAsStream("/Images/LIBRO4.jpg"));
+            panelCatalogo.setVisible(!panelCatalogo.isVisible());
+            panelDeDetalles.setVisible(true);
+            if (!panelCatalogo.isVisible()) {
+                txtTituloGN.setText("Hamlet");
+                imagenGN.setImage(ima);
+                txtPrecioGN.setText("50,000 COP");
+                txtContextGN.setText("La tragedia de Hamlet, príncipe de Dinamarca (título original en inglés: The Tragical History of Hamlet,"
+                        + "\nPrince of Denmark), o simplemente Hamlet, es una tragedia del dramaturgo "
+                        + "\ninglés William Shakespeare.1​ Su autor probablemente basó Hamlet en dos "
+                        + "\nfuentes: la leyenda de Amleth y una perdida obra isabelina conocida hoy como "
+                        + "\nUr-Hamlet o Hamlet original (hecho que se deduce de otros textos)."
+                        + "\n\n"
+                        + "\nEl año concreto en que fue escrita sigue aún en disputa, cuestión que se complica porque "
+                        + "\nse han conservado a la época actual tres versiones tempranas de la obra,"
+                        + "\nconocidas como First Quarto (Q1), Second Quarto (Q2) y el First Folio (F1); "
+                        + "\ncada cual única, puesto que poseen líneas —e incluso escenas— diferentes o ausentes entre ellas."
+                        + "\nDichas obras posiblemente fueron compuestas en algún momento entre 1599 y 1601.");
+                txtAutorGN.setText("William Shakespeare");
+                txtPublicadoGN.setText("1623");
+            }
+        } else if (event.getSource() == btnDetalles4) {
+            Image ima = new Image(getClass().getResourceAsStream("/Images/LIBRO3.jpg"));
+            panelCatalogo.setVisible(!panelCatalogo.isVisible());
+            panelDeDetalles.setVisible(true);
+            if (!panelCatalogo.isVisible()) {
+                txtTituloGN.setText("El Principito");
+                imagenGN.setImage(ima);
+                txtPrecioGN.setText("80,000 COP");
+                txtContextGN.setText("El principito es un cuento poético que viene acompañado de ilustraciones"
+                        + "\n hechas con acuarelas por el mismo Saint-Exupéry. En él, un piloto "
+                        + "\nse encuentra perdido en el desierto del Sahara después de que su avión"
+                        + "\nsufriera una avería, pero para su sorpresa, es allí donde conoce a un pequeño"
+                        + "\npríncipe proveniente de otro planeta. La historia tiene una temática filosófica, "
+                        + "\ndonde se incluyen críticas sociales dirigidas a la «extrañeza» con la que los "
+                        + "\nadultos ven las cosas. Estas críticas a las cosas «importantes» y al mundo de los "
+                        + "\nadultos van apareciendo en el libro a lo largo de la narración.");
+                txtAutorGN.setText("Antonie de Saint - Exupery");
+                txtPublicadoGN.setText("04/1943");
+            }
         }
     }
 
@@ -268,13 +375,12 @@ public class Controller_View_Principal implements Initializable {
 
                 Nodo_Book book2 = new Nodo_Book(
                         user.getIdentificacion(), "Divergente", "Veronica Roth",
-                        "Juego de Tronos es la primera entrega de la serie"
-                        + "\nCanción de Hielo y Fuego escrita por George R. R. Martin"
-                        + "\nLa historia se desarrolla en los Siete Reinos de Poniente donde "
-                        + "\ndiferentes casas nobles gobiernan las regiones."
-                        + "\n\nTras un largo verano el invierno se acerca a los Siete Reinos."
-                        + "\nLord Eddard Stark señor de Invernalia deja sus dominios para"
-                        + "\nunirse a la corte de su amigo el rey Robert Baratheon llamado el Usurpador.",
+                        "Divergente es una novela distópica escrita por Veronica Roth12345."
+                        + "\nLa historia se desarrolla en un Chicago post-apocalíptico"
+                        + "\ndonde la sociedad está dividida en cinco facciones: Verdad"
+                        + "\nAbnegación Osadía Cordialidad y Erudición1. La protagonista Beatrice Prior "
+                        + "\ndebe elegir a qué facción pertenecer pero su identidad misma socava la estricta"
+                        + "\nestructura social de su sociedad.",
                         95000, "04/2011", "/Images/LIBRO2.jpg");
                 if (pila.isEmpty()) {
                     pilaB.setPush(book2);
@@ -302,7 +408,7 @@ public class Controller_View_Principal implements Initializable {
 
                 Nodo_Book book3 = new Nodo_Book(
                         user.getIdentificacion(), "Hamlet", "William Shakespeare",
-                        "\nLa tragedia de Hamlet, príncipe de Dinamarca (título original en inglés: The Tragical History of Hamlet,"
+                        "La tragedia de Hamlet, príncipe de Dinamarca (título original en inglés: The Tragical History of Hamlet,"
                         + "\nPrince of Denmark), o simplemente Hamlet, es una tragedia del dramaturgo "
                         + "\ninglés William Shakespeare.1​ Su autor probablemente basó Hamlet en dos "
                         + "\nfuentes: la leyenda de Amleth y una perdida obra isabelina conocida hoy como "
@@ -422,6 +528,7 @@ public class Controller_View_Principal implements Initializable {
 
                 containerBooksC.getChildren().clear();
                 NO_HAY_CAR.setVisible(true);
+                NO_HAY_FAV.setVisible(false);
                 return;
             }
 
@@ -443,6 +550,7 @@ public class Controller_View_Principal implements Initializable {
                 if (librosAgregar.isEmpty()) {
                     containerBooksC.getChildren().clear();
                     NO_HAY_CAR.setVisible(true);
+                    NO_HAY_FAV.setVisible(false);
                 } else {
                     containerBooksC.getChildren().clear();
                     containerBooksC.getChildren().addAll(librosAgregar);
@@ -453,7 +561,7 @@ public class Controller_View_Principal implements Initializable {
             System.out.println("Se produjo un error: " + e.getMessage());
         }
     }
-    
+
     private void mostrarBooksF() {
         try {
             Nodo_User user = listaU.buscarEmail(txt_user.getText());
@@ -466,6 +574,7 @@ public class Controller_View_Principal implements Initializable {
 
                 containerBooksF.getChildren().clear();
                 NO_HAY_FAV.setVisible(true);
+                NO_HAY_CAR.setVisible(false);
                 return;
             }
 
@@ -487,6 +596,7 @@ public class Controller_View_Principal implements Initializable {
                 if (librosAgregar.isEmpty()) {
                     containerBooksF.getChildren().clear();
                     NO_HAY_FAV.setVisible(true);
+                    NO_HAY_CAR.setVisible(false);
                 } else {
                     containerBooksF.getChildren().clear();
                     containerBooksF.getChildren().addAll(librosAgregar);
