@@ -131,7 +131,7 @@ public class Pila_Books {
 
         Nodo_Book aux = null;
         if (!pilaFav.empty()) {
-            aux = getBook(id, titulo);
+            aux = getBookFav(id, titulo);
             if ((aux != null) && (pilaFav.remove(aux))) {
                 alert.setAlertType(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Aviso.");
@@ -284,7 +284,7 @@ public class Pila_Books {
 
                 Nodo_Book book = new Nodo_Book(idPropietario, titulo, autor, precio, fechaPublicacion, URL_IMAGE);
 
-                setPush(book);
+                setPushFav(book);
             }
 
         } catch (IOException e) {

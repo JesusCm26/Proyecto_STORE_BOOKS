@@ -1,10 +1,8 @@
 package Controllers;
 
-import Models.EstructurasDeDatos.Lista_Users;
 import Models.EstructurasDeDatos.Pila_Books;
 import Models.ModeloDeDatos;
 import Models.Nodos.Nodo_Book;
-import Models.Nodos.Nodo_User;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -41,7 +39,6 @@ import javafx.stage.Stage;
 public class Controller_View_Principal implements Initializable {
 
     private final Pila_Books pilaB = ModeloDeDatos.obtenerInstancia().getPialB();
-    private final Lista_Users listaU = ModeloDeDatos.obtenerInstancia().getListaU();
     public int idUsuario;
     private ObservableList<HBox> elementosCarrito;
     private ObservableList<HBox> elementosFavoritos;
@@ -205,6 +202,8 @@ public class Controller_View_Principal implements Initializable {
             if (panelCarrito.isVisible()) {
                 panelFavoritos.setVisible(false);
                 paneOpcionesUser.setVisible(false);
+                pilaB.cargarBooks();
+                pilaB.cargarBooks_Fav();
                 mostrarBooksC();
             } else {
                 NO_HAY_CAR.setVisible(false);
@@ -215,6 +214,8 @@ public class Controller_View_Principal implements Initializable {
             if (panelFavoritos.isVisible()) {
                 panelCarrito.setVisible(false);
                 paneOpcionesUser.setVisible(false);
+                pilaB.cargarBooks();
+                pilaB.cargarBooks_Fav();
                 mostrarBooksF();
             } else {
                 NO_HAY_CAR.setVisible(false);
@@ -302,330 +303,80 @@ public class Controller_View_Principal implements Initializable {
                 txtPublicadoGN.setText("04/1943");
             }
         } else if (event.getSource() == btnAgregarCGN) {
-            Nodo_Book book = null;
-
             switch (imagenGN.getUserData().toString()) {
                 case "/Images/LIBRO1.jpg":
-
-                    book = new Nodo_Book(
-                            idUsuario, "Juego de Tronos", "George Martin",
-                            "Juego de Tronos es la primera entrega de la serie"
-                            + "\nCanción de Hielo y Fuego escrita por George R. R. Martin"
-                            + "\nLa historia se desarrolla en los Siete Reinos de Poniente donde "
-                            + "\ndiferentes casas nobles gobiernan las regiones."
-                            + "\n\nTras un largo verano el invierno se acerca a los Siete Reinos."
-                            + "\nLord Eddard Stark señor de Invernalia deja sus dominios para"
-                            + "\nunirse a la corte de su amigo el rey Robert Baratheon llamado el Usurpador.",
-                            70000, "08/1996", "/Images/LIBRO1.jpg");
-
-                    if (pilaB.getPilaC().isEmpty()) {
-                        pilaB.setPush(book);
-                        pilaB.guardarBooks();
-                        book = pilaB.getBookFav(idUsuario, "Juego de Tronos");
-                        if (book != null) {
-                            pilaB.popBookFav(idUsuario, "Juego de Tronos");
-                            pilaB.guardarBooks_Fav();
-                        }
-                        Alert(Alert.AlertType.INFORMATION, "INFO:", "Libro agregado de forma exitosa al carrito de compras...!");
-                    } else {
-                        if (pilaB.getPilaC().indexOf(book) != -1) {
-                            Alert(Alert.AlertType.WARNING, "INFO:", "Este libro ya ha sido agregado al carrito de compras"
-                                    + "\nNo se pudo agrear.");
-                        } else {
-                            pilaB.setPush(book);
-                            pilaB.guardarBooks();
-                            book = pilaB.getBookFav(idUsuario, "Juego de Tronos");
-                            if (book != null) {
-                                pilaB.popBookFav(idUsuario, "Juego de Tronos");
-                                pilaB.guardarBooks_Fav();
-                            }
-                            Alert(Alert.AlertType.INFORMATION, "INFO:", "Libro agregado de forma exitosa al carrito de compras...!");
-                        }
-                    }
+                    agregarLibroACarrito(idUsuario, "Juego de Tronos", "George Martin", 70000, "08/1996", "/Images/LIBRO1.jpg");
                     break;
                 case "/Images/LIBRO2.jpg":
-
-                    book = new Nodo_Book(
-                            idUsuario, "Divergente", "Veronica Roth",
-                            "Divergente es una novela distópica escrita por Veronica Roth12345."
-                            + "\nLa historia se desarrolla en un Chicago post-apocalíptico"
-                            + "\ndonde la sociedad está dividida en cinco facciones: Verdad"
-                            + "\nAbnegación Osadía Cordialidad y Erudición1. La protagonista Beatrice Prior "
-                            + "\ndebe elegir a qué facción pertenecer pero su identidad misma socava la estricta"
-                            + "\nestructura social de su sociedad.",
-                            95000, "04/2011", "/Images/LIBRO2.jpg");
-
-                    if (pilaB.getPilaC().isEmpty()) {
-                        pilaB.setPush(book);
-                        pilaB.guardarBooks();
-                        book = pilaB.getBookFav(idUsuario, "Divergente");
-                        if (book != null) {
-                            pilaB.popBookFav(idUsuario, "Divergente");
-                            pilaB.guardarBooks_Fav();
-                        }
-                        Alert(Alert.AlertType.INFORMATION, "INFO:", "Libro agregado de forma exitosa al carrito de compras...!");
-                    } else {
-                        if (pilaB.getPilaC().indexOf(book) != -1) {
-                            Alert(Alert.AlertType.WARNING, "INFO:", "Este libro ya ha sido agregado al carrito de compras"
-                                    + "\nNo se pudo agrear.");
-                        } else {
-                            pilaB.setPush(book);
-                            pilaB.guardarBooks();
-                            book = pilaB.getBookFav(idUsuario, "Divergente");
-                            if (book != null) {
-                                pilaB.popBookFav(idUsuario, "Divergente");
-                                pilaB.guardarBooks_Fav();
-                            }
-                            Alert(Alert.AlertType.INFORMATION, "INFO:", "Libro agregado de forma exitosa al carrito de compras...!");
-                        }
-                    }
+                    agregarLibroACarrito(idUsuario, "Divergente", "Veronica Roth", 95000, "04/2011", "/Images/LIBRO2.jpg");
                     break;
                 case "/Images/LIBRO3.jpg":
-
-                    book = new Nodo_Book(
-                            idUsuario, "Principito", "Antonie de Saint - Exupery",
-                            "El principito es un cuento poético que viene acompañado de ilustraciones"
-                            + "\n hechas con acuarelas por el mismo Saint-Exupéry. En él, un piloto "
-                            + "\nse encuentra perdido en el desierto del Sahara después de que su avión"
-                            + "\nsufriera una avería, pero para su sorpresa, es allí donde conoce a un pequeño"
-                            + "\npríncipe proveniente de otro planeta. La historia tiene una temática filosófica, "
-                            + "\ndonde se incluyen críticas sociales dirigidas a la «extrañeza» con la que los "
-                            + "\nadultos ven las cosas. Estas críticas a las cosas «importantes» y al mundo de los "
-                            + "\nadultos van apareciendo en el libro a lo largo de la narración.",
-                            80000, "04/2011", "/Images/LIBRO3.jpg");
-
-                    if (pilaB.getPilaC().isEmpty()) {
-                        pilaB.setPush(book);
-                        pilaB.guardarBooks();
-                        book = pilaB.getBookFav(idUsuario, "Principito");
-                        if (book != null) {
-                            pilaB.popBookFav(idUsuario, "Principito");
-                            pilaB.guardarBooks_Fav();
-                        }
-                        Alert(Alert.AlertType.INFORMATION, "INFO:", "Libro agregado de forma exitosa al carrito de compras...!");
-                    } else {
-                        if (pilaB.getPilaC().indexOf(book) != -1) {
-                            Alert(Alert.AlertType.WARNING, "INFO:", "Este libro ya ha sido agregado al carrito de compras"
-                                    + "\nNo se pudo agrear.");
-                        } else {
-                            pilaB.setPush(book);
-                            pilaB.guardarBooks();
-                            book = pilaB.getBookFav(idUsuario, "Principito");
-                            if (book != null) {
-                                pilaB.popBookFav(idUsuario, "Principito");
-                                pilaB.guardarBooks_Fav();
-                            }
-                            Alert(Alert.AlertType.INFORMATION, "INFO:", "Libro agregado de forma exitosa al carrito de compras...!");
-                        }
-                    }
+                    agregarLibroACarrito(idUsuario, "Principito", "Antonie de Saint-Exupéry", 80000, "04/2011", "/Images/LIBRO3.jpg");
                     break;
                 case "/Images/LIBRO4.jpg":
-
-                    book = new Nodo_Book(
-                            idUsuario, "Hamlet", "William Shakespeare",
-                            "La tragedia de Hamlet, príncipe de Dinamarca (título original en inglés: The Tragical History of Hamlet,"
-                            + "\nPrince of Denmark), o simplemente Hamlet, es una tragedia del dramaturgo "
-                            + "\ninglés William Shakespeare.1​ Su autor probablemente basó Hamlet en dos "
-                            + "\nfuentes: la leyenda de Amleth y una perdida obra isabelina conocida hoy como "
-                            + "\nUr-Hamlet o Hamlet original (hecho que se deduce de otros textos)."
-                            + "\n\n"
-                            + "\nEl año concreto en que fue escrita sigue aún en disputa, cuestión que se complica porque "
-                            + "\nse han conservado a la época actual tres versiones tempranas de la obra,"
-                            + "\nconocidas como First Quarto (Q1), Second Quarto (Q2) y el First Folio (F1); "
-                            + "\ncada cual única, puesto que poseen líneas —e incluso escenas— diferentes o ausentes entre ellas. Dichas obras posiblemente fueron compuestas en algún momento entre 1599 y 1601.",
-                            50000, "1623", "/Images/LIBRO4.jpg");
-
-                    if (pilaB.getPilaC().isEmpty()) {
-                        pilaB.setPush(book);
-                        pilaB.guardarBooks();
-                        book = pilaB.getBookFav(idUsuario, "Hamlet");
-                        if (book != null) {
-                            pilaB.popBookFav(idUsuario, "Hamlet");
-                            pilaB.guardarBooks_Fav();
-                        }
-                        Alert(Alert.AlertType.INFORMATION, "INFO:", "Libro agregado de forma exitosa al carrito de compras...!");
-                    } else {
-                        if (pilaB.getPilaC().indexOf(book) != -1) {
-                            Alert(Alert.AlertType.WARNING, "INFO:", "Este libro ya ha sido agregado al carrito de compras"
-                                    + "\nNo se pudo agrear.");
-                        } else {
-                            pilaB.setPush(book);
-                            pilaB.guardarBooks();
-                            book = pilaB.getBookFav(idUsuario, "Hamlet");
-                            if (book != null) {
-                                pilaB.popBookFav(idUsuario, "Hamlet");
-                                pilaB.guardarBooks_Fav();
-                            }
-                            Alert(Alert.AlertType.INFORMATION, "INFO:", "Libro agregado de forma exitosa al carrito de compras...!");
-                        }
-                    }
+                    agregarLibroACarrito(idUsuario, "Hamlet", "William Shakespeare", 50000, "1623", "/Images/LIBRO4.jpg");
                     break;
                 default:
-                    throw new AssertionError();
+                    throw new AssertionError("Libro no reconocido");
             }
         } else if (event.getSource() == btnAgregarFGN) {
-            Nodo_Book book = null;
-
             switch (imagenGN.getUserData().toString()) {
                 case "/Images/LIBRO1.jpg":
-
-                    book = new Nodo_Book(
-                            idUsuario, "Juego de Tronos", "George Martin",
-                            "Juego de Tronos es la primera entrega de la serie"
-                            + "\nCanción de Hielo y Fuego escrita por George R. R. Martin"
-                            + "\nLa historia se desarrolla en los Siete Reinos de Poniente donde "
-                            + "\ndiferentes casas nobles gobiernan las regiones."
-                            + "\n\nTras un largo verano el invierno se acerca a los Siete Reinos."
-                            + "\nLord Eddard Stark señor de Invernalia deja sus dominios para"
-                            + "\nunirse a la corte de su amigo el rey Robert Baratheon llamado el Usurpador.",
-                            70000, "08/1996", "/Images/LIBRO1.jpg");
-
-                    if (pilaB.getPilaFav().isEmpty()) {
-                        pilaB.setPushFav(book);
-                        pilaB.guardarBooks_Fav();
-                        book = pilaB.getBook(idUsuario, "Juego de Tronos");
-                        if (book != null) {
-                            pilaB.popBook(idUsuario, "Juego de Tronos");
-                            pilaB.guardarBooks();
-                        }
-                        Alert(Alert.AlertType.INFORMATION, "INFO:", "Libro agregado de forma exitosa al panel de favoritos...!");
-                    } else {
-                        if (pilaB.getPilaFav().indexOf(book) != -1) {
-                            Alert(Alert.AlertType.WARNING, "INFO:", "Este libro ya ha sido agregado al panel de favoritos"
-                                    + "\nNo se pudo agrear.");
-                        } else {
-                            pilaB.setPushFav(book);
-                            pilaB.guardarBooks_Fav();
-                            book = pilaB.getBook(idUsuario, "Juego de Tronos");
-                            if (book != null) {
-                                pilaB.popBook(idUsuario, "Juego de Tronos");
-                                pilaB.guardarBooks();
-                            }
-                            Alert(Alert.AlertType.INFORMATION, "INFO:", "Libro agregado de forma exitosa al panel de favoritos...!");
-                        }
-                    }
+                    agregarLibroAFavoritos(idUsuario, "Juego de Tronos", "George Martin", 70000, "08/1996", "/Images/LIBRO1.jpg");
                     break;
                 case "/Images/LIBRO2.jpg":
-
-                    book = new Nodo_Book(
-                            idUsuario, "Divergente", "Veronica Roth",
-                            "Divergente es una novela distópica escrita por Veronica Roth12345."
-                            + "\nLa historia se desarrolla en un Chicago post-apocalíptico"
-                            + "\ndonde la sociedad está dividida en cinco facciones: Verdad"
-                            + "\nAbnegación Osadía Cordialidad y Erudición1. La protagonista Beatrice Prior "
-                            + "\ndebe elegir a qué facción pertenecer pero su identidad misma socava la estricta"
-                            + "\nestructura social de su sociedad.",
-                            95000, "04/2011", "/Images/LIBRO2.jpg");
-
-                    if (pilaB.getPilaFav().isEmpty()) {
-                        pilaB.setPushFav(book);
-                        pilaB.guardarBooks_Fav();
-                        book = pilaB.getBook(idUsuario, "Divergente");
-                        if (book != null) {
-                            pilaB.popBook(idUsuario, "Divergente");
-                            pilaB.guardarBooks();
-                        }
-                        Alert(Alert.AlertType.INFORMATION, "INFO:", "Libro agregado de forma exitosa al panel de favoritos...!");
-                    } else {
-                        if (pilaB.getPilaFav().indexOf(book) != -1) {
-                            Alert(Alert.AlertType.WARNING, "INFO:", "Este libro ya ha sido agregado al panel de favoritos"
-                                    + "\nNo se pudo agrear.");
-                        } else {
-                            pilaB.setPushFav(book);
-                            pilaB.guardarBooks_Fav();
-                            book = pilaB.getBook(idUsuario, "Divergente");
-                            if (book != null) {
-                                pilaB.popBook(idUsuario, "Divergente");
-                                pilaB.guardarBooks();
-                            }
-                            Alert(Alert.AlertType.INFORMATION, "INFO:", "Libro agregado de forma exitosa al panel de favoritos...!");
-                        }
-                    }
+                    agregarLibroAFavoritos(idUsuario, "Divergente", "Veronica Roth", 95000, "04/2011", "/Images/LIBRO2.jpg");
                     break;
                 case "/Images/LIBRO3.jpg":
-
-                    book = new Nodo_Book(
-                            idUsuario, "Principito", "Antonie de Saint - Exupery",
-                            "El principito es un cuento poético que viene acompañado de ilustraciones"
-                            + "\n hechas con acuarelas por el mismo Saint-Exupéry. En él, un piloto "
-                            + "\nse encuentra perdido en el desierto del Sahara después de que su avión"
-                            + "\nsufriera una avería, pero para su sorpresa, es allí donde conoce a un pequeño"
-                            + "\npríncipe proveniente de otro planeta. La historia tiene una temática filosófica, "
-                            + "\ndonde se incluyen críticas sociales dirigidas a la «extrañeza» con la que los "
-                            + "\nadultos ven las cosas. Estas críticas a las cosas «importantes» y al mundo de los "
-                            + "\nadultos van apareciendo en el libro a lo largo de la narración.",
-                            80000, "04/2011", "/Images/LIBRO3.jpg");
-
-                    if (pilaB.getPilaFav().isEmpty()) {
-                        pilaB.setPushFav(book);
-                        pilaB.guardarBooks_Fav();
-                        book = pilaB.getBook(idUsuario, "Principito");
-                        if (book != null) {
-                            pilaB.popBook(idUsuario, "Principito");
-                            pilaB.guardarBooks();
-                        }
-                        Alert(Alert.AlertType.INFORMATION, "INFO:", "Libro agregado de forma exitosa al panel de favoritos...!");
-                    } else {
-                        if (pilaB.getPilaFav().indexOf(book) != -1) {
-                            Alert(Alert.AlertType.WARNING, "INFO:", "Este libro ya ha sido agregado al panel de favoritos"
-                                    + "\nNo se pudo agrear.");
-                        } else {
-                            pilaB.setPushFav(book);
-                            pilaB.guardarBooks_Fav();
-                            book = pilaB.getBook(idUsuario, "Principito");
-                            if (book != null) {
-                                pilaB.popBook(idUsuario, "Principito");
-                                pilaB.guardarBooks();
-                            }
-                            Alert(Alert.AlertType.INFORMATION, "INFO:", "Libro agregado de forma exitosa al panel de favoritos...!");
-                        }
-                    }
+                    agregarLibroAFavoritos(idUsuario, "Principito", "Antonie de Saint-Exupéry", 80000, "04/2011", "/Images/LIBRO3.jpg");
                     break;
                 case "/Images/LIBRO4.jpg":
-
-                    book = new Nodo_Book(
-                            idUsuario, "Hamlet", "William Shakespeare",
-                            "La tragedia de Hamlet, príncipe de Dinamarca (título original en inglés: The Tragical History of Hamlet,"
-                            + "\nPrince of Denmark), o simplemente Hamlet, es una tragedia del dramaturgo "
-                            + "\ninglés William Shakespeare.1​ Su autor probablemente basó Hamlet en dos "
-                            + "\nfuentes: la leyenda de Amleth y una perdida obra isabelina conocida hoy como "
-                            + "\nUr-Hamlet o Hamlet original (hecho que se deduce de otros textos)."
-                            + "\n\n"
-                            + "\nEl año concreto en que fue escrita sigue aún en disputa, cuestión que se complica porque "
-                            + "\nse han conservado a la época actual tres versiones tempranas de la obra,"
-                            + "\nconocidas como First Quarto (Q1), Second Quarto (Q2) y el First Folio (F1); "
-                            + "\ncada cual única, puesto que poseen líneas —e incluso escenas— diferentes o ausentes entre ellas. Dichas obras posiblemente fueron compuestas en algún momento entre 1599 y 1601.",
-                            50000, "1623", "/Images/LIBRO4.jpg");
-
-                    if (pilaB.getPilaFav().isEmpty()) {
-                        pilaB.setPushFav(book);
-                        pilaB.guardarBooks_Fav();
-                        book = pilaB.getBook(idUsuario, "Hamlet");
-                        if (book != null) {
-                            pilaB.popBook(idUsuario, "Hamlet");
-                            pilaB.guardarBooks();
-                        }
-                        Alert(Alert.AlertType.INFORMATION, "INFO:", "Libro agregado de forma exitosa al panel de favoritos...!");
-                    } else {
-                        if (pilaB.getPilaFav().indexOf(book) != -1) {
-                            Alert(Alert.AlertType.WARNING, "INFO:", "Este libro ya ha sido agregado al panel de favoritos"
-                                    + "\nNo se pudo agrear.");
-                        } else {
-                            pilaB.setPushFav(book);
-                            pilaB.guardarBooks_Fav();
-                            book = pilaB.getBook(idUsuario, "Hamlet");
-                            if (book != null) {
-                                pilaB.popBook(idUsuario, "Hamlet");
-                                pilaB.guardarBooks();
-                            }
-                            Alert(Alert.AlertType.INFORMATION, "INFO:", "Libro agregado de forma exitosa al panel de favoritos...!");
-                        }
-                    }
+                    agregarLibroAFavoritos(idUsuario, "Hamlet", "William Shakespeare", 50000, "1623", "/Images/LIBRO4.jpg");
                     break;
                 default:
-                    throw new AssertionError();
+                    throw new AssertionError("Libro no reconocido");
             }
         }
+    }
+
+    private void agregarLibroACarrito(int idUsuario, String titulo, String autor, float precio, String fecha, String imagen) {
+        Nodo_Book book = new Nodo_Book(idUsuario, titulo, autor, precio, fecha, imagen);
+
+        if (pilaB.getPilaC().stream().anyMatch(b -> b.getTitulo().equals(titulo))) {
+            Alert(Alert.AlertType.WARNING, "INFO:", "Este libro ya ha sido agregado al carrito de compras.\nNo se pudo agregar.");
+            return;
+        }
+
+        pilaB.setPush(book);
+        pilaB.guardarBooks();
+
+        Nodo_Book bookFav = pilaB.getBookFav(idUsuario, titulo);
+        if (bookFav != null) {
+            pilaB.popBookFav(idUsuario, titulo);
+            pilaB.guardarBooks_Fav();
+        }
+
+        Alert(Alert.AlertType.INFORMATION, "INFO:", "Libro agregado de forma exitosa al carrito de compras...!");
+    }
+
+    private void agregarLibroAFavoritos(int idUsuario, String titulo, String autor, float precio, String fecha, String imagen) {
+        Nodo_Book book = new Nodo_Book(idUsuario, titulo, autor, precio, fecha, imagen);
+
+        if (pilaB.getPilaFav().stream().anyMatch(b -> b.getTitulo().equals(titulo))) {
+            Alert(Alert.AlertType.WARNING, "INFO:", "Este libro ya ha sido agregado al panel de favoritos \nNo se pudo agrear.");
+            return;
+        }
+
+        pilaB.setPushFav(book);
+        pilaB.guardarBooks_Fav();
+
+        Nodo_Book bookC = pilaB.getBook(idUsuario, titulo);
+        if (bookC != null) {
+            pilaB.popBook(idUsuario, titulo);
+            pilaB.guardarBooks();
+        }
+
+        Alert(Alert.AlertType.INFORMATION, "INFO:", "Libro agregado de forma exitosa al panel de favoritos...!");
     }
 
     public void closeWindow() {
@@ -659,110 +410,40 @@ public class Controller_View_Principal implements Initializable {
 
     @FXML
     private void pasarAlCarrtio(MouseEvent event) {
-        Stack<Nodo_Book> pila = pilaB.getBooks(idUsuario);
-
         if (event.getSource() == p1) {
 
-            Nodo_Book book = new Nodo_Book(idUsuario, "Juego de Tronos", "George Martin",
-                    70000, "08/1996", "/Images/LIBRO1.jpg");
-
-            if (pila.isEmpty()) {
-                pilaB.setPush(book);
-                pilaB.guardarBooks();
-                Alert(Alert.AlertType.INFORMATION, "Aviso", "Libro agregado exitosamente al carrito..!");
-                containerBooksF.getChildren().remove(F_JuegodeTronos);
-                pilaB.popBookFav(idUsuario, "Juego de Tronos");
-                pilaB.guardarBooks_Fav();
-                pilaB.cargarBooks_Fav();
-            } else {
-                if (pilaB.getPilaC().indexOf(book) != -1) {
-                    Alert(Alert.AlertType.INFORMATION, "Aviso", "El Libro ya ha sido agregado al carrito..!");
-                } else {
-                    pilaB.setPush(book);
-                    pilaB.guardarBooks();
-                    Alert(Alert.AlertType.INFORMATION, "Aviso", "Libro agregado exitosamente al carrito..!");
-                    containerBooksF.getChildren().remove(F_JuegodeTronos);
-                    pilaB.popBookFav(idUsuario, "Juego de Tronos");
-                    pilaB.guardarBooks_Fav();
-                    pilaB.cargarBooks_Fav();
-                }
-            }
+            Nodo_Book book1 = new Nodo_Book(idUsuario, "Juego de Tronos", "George Martin", 70000, "08/1996", "/Images/LIBRO1.jpg");
+            moverLibroAlCarrito(idUsuario, book1, containerBooksF, F_JuegodeTronos);
         } else if (event.getSource() == p2) {
-            Nodo_Book book2 = new Nodo_Book(
-                    idUsuario, "Divergente", "Veronica Roth",
-                    95000, "04/2011", "/Images/LIBRO2.jpg");
-            if (pila.isEmpty()) {
-                pilaB.setPush(book2);
-                pilaB.guardarBooks();
-                Alert(Alert.AlertType.INFORMATION, "Aviso", "Libro agregado exitosamente al carrito..!");
-                containerBooksF.getChildren().remove(F_Divergente);
-                pilaB.popBookFav(idUsuario, "Divergente");
-                pilaB.guardarBooks_Fav();
-                pilaB.cargarBooks_Fav();
-            } else {
-                if (pilaB.getPilaC().indexOf(book2) != -1) {
-                    Alert(Alert.AlertType.INFORMATION, "Aviso", "El Libro ya ha sido agregado al carrito..!");
-                } else {
-                    pilaB.setPush(book2);
-                    pilaB.guardarBooks();
-                    Alert(Alert.AlertType.INFORMATION, "Aviso", "Libro agregado exitosamente al carrito..!");
-                    containerBooksF.getChildren().remove(F_Divergente);
-                    pilaB.popBookFav(idUsuario, "Divergente");
-                    pilaB.guardarBooks_Fav();
-                    pilaB.cargarBooks_Fav();
-                }
-            }
+
+            Nodo_Book book2 = new Nodo_Book(idUsuario, "Divergente", "Veronica Roth", 95000, "04/2011", "/Images/LIBRO2.jpg");
+            moverLibroAlCarrito(idUsuario, book2, containerBooksF, F_Divergente);
         } else if (event.getSource() == p3) {
-            Nodo_Book book3 = new Nodo_Book(
-                    idUsuario, "Hamlet", "William Shakespeare",
-                    50000, "1623", "/Images/LIBRO4.jpg");
-            if (pila.isEmpty()) {
-                pilaB.setPush(book3);
-                pilaB.guardarBooks();
-                Alert(Alert.AlertType.INFORMATION, "Aviso", "Libro agregado exitosamente al carrito..!");
-                containerBooksF.getChildren().remove(F_Hamlet);
-                pilaB.popBookFav(idUsuario, "Hamlet");
-                pilaB.guardarBooks_Fav();
-                pilaB.cargarBooks_Fav();
-            } else {
-                if (pilaB.getPilaC().indexOf(book3) != -1) {
-                    Alert(Alert.AlertType.INFORMATION, "Aviso", "El Libro ya ha sido agregado al carrito..!");
-                } else {
-                    pilaB.setPush(book3);
-                    pilaB.guardarBooks();
-                    Alert(Alert.AlertType.INFORMATION, "Aviso", "Libro agregado exitosamente al carrito..!");
-                    containerBooksF.getChildren().remove(F_Hamlet);
-                    pilaB.popBookFav(idUsuario, "Hamlet");
-                    pilaB.guardarBooks_Fav();
-                    pilaB.cargarBooks_Fav();
-                }
-            }
+
+            Nodo_Book book3 = new Nodo_Book(idUsuario, "Hamlet", "William Shakespeare", 50000, "1623", "/Images/LIBRO4.jpg");
+            moverLibroAlCarrito(idUsuario, book3, containerBooksF, F_Hamlet);
         } else if (event.getSource() == p4) {
-            Nodo_Book book4 = new Nodo_Book(
-                    idUsuario, "Principito", "Antonie de Saint - Exupery",
-                    80000, "04/2011", "/Images/LIBRO3.jpg");
-            if (pila.isEmpty()) {
-                pilaB.setPush(book4);
-                pilaB.guardarBooks();
-                Alert(Alert.AlertType.INFORMATION, "Aviso", "Libro agregado exitosamente al carrito..!");
-                containerBooksF.getChildren().remove(F_Principito);
-                pilaB.popBookFav(idUsuario, "Principito");
-                pilaB.guardarBooks_Fav();
-                pilaB.cargarBooks_Fav();
-            } else {
-                if (pilaB.getPilaC().indexOf(book4) != -1) {
-                    Alert(Alert.AlertType.INFORMATION, "Aviso", "El Libro ya ha sido agregado al carrito..!");
-                } else {
-                    pilaB.setPush(book4);
-                    pilaB.guardarBooks();
-                    Alert(Alert.AlertType.INFORMATION, "Aviso", "Libro agregado exitosamente al carrito..!");
-                    containerBooksF.getChildren().remove(F_Principito);
-                    pilaB.popBookFav(idUsuario, "Principito");
-                    pilaB.guardarBooks_Fav();
-                    pilaB.cargarBooks_Fav();
-                }
-            }
+
+            Nodo_Book book4 = new Nodo_Book(idUsuario, "Principito", "Antonie de Saint - Exupery", 80000, "04/2011", "/Images/LIBRO3.jpg");
+            moverLibroAlCarrito(idUsuario, book4, containerBooksF, F_Principito);
         }
+    }
+
+    private void moverLibroAlCarrito(int idUsuario, Nodo_Book book, FlowPane containerBooksF, HBox libroPane) {
+        Stack<Nodo_Book> pila = pilaB.getBooks(idUsuario);
+
+        if (pila.stream().anyMatch(b -> b.getTitulo().equals(book.getTitulo()))) {
+            Alert(Alert.AlertType.INFORMATION, "Aviso", "El Libro ya ha sido agregado al carrito..!");
+            return;
+        }
+
+        pilaB.setPush(book);
+        pilaB.guardarBooks();
+        Alert(Alert.AlertType.INFORMATION, "Aviso", "Libro agregado exitosamente al carrito..!");
+
+        containerBooksF.getChildren().remove(libroPane);
+        pilaB.popBookFav(idUsuario, book.getTitulo());
+        pilaB.guardarBooks_Fav();
     }
 
     @FXML
@@ -772,22 +453,18 @@ public class Controller_View_Principal implements Initializable {
             containerBooksC.getChildren().remove(C_JuegodeTronos);
             pilaB.popBook(idUsuario, "Juego de Tronos");
             pilaB.guardarBooks();
-            pilaB.cargarBooks();
         } else if (event.getSource() == e2) {
             containerBooksC.getChildren().remove(C_Divergente);
             pilaB.popBook(idUsuario, "Divergente");
             pilaB.guardarBooks();
-            pilaB.cargarBooks();
         } else if (event.getSource() == e3) {
             containerBooksC.getChildren().remove(C_Hamlet);
             pilaB.popBook(idUsuario, "Hamlet");
             pilaB.guardarBooks();
-            pilaB.cargarBooks();
         } else if (event.getSource() == e4) {
             containerBooksC.getChildren().remove(C_Principito);
             pilaB.popBook(idUsuario, "Principito");
             pilaB.guardarBooks();
-            pilaB.cargarBooks();
         }
     }
 
@@ -814,7 +491,7 @@ public class Controller_View_Principal implements Initializable {
                 for (Nodo_Book bookAux : pila) {
                     for (Node node : containerBooksC.getChildren()) {
                         HBox newHbox = (HBox) node;
-                        String titulo = bookAux.getTitulo().replaceAll("\\s", "");
+                        String titulo = bookAux.getTitulo().replaceAll(" ", "");
                         if (newHbox.getId().equals("C_" + titulo)) {
                             librosAgregar.add(newHbox);
                         }
@@ -859,7 +536,7 @@ public class Controller_View_Principal implements Initializable {
                 for (Nodo_Book bookAux : pila) {
                     for (Node node : containerBooksF.getChildren()) {
                         HBox newHbox = (HBox) node;
-                        String titulo = bookAux.getTitulo().replaceAll("\\s", "");
+                        String titulo = bookAux.getTitulo().replaceAll(" ", "");
                         if (newHbox.getId().equals("F_" + titulo)) {
                             librosAgregar.add(newHbox);
                         }
