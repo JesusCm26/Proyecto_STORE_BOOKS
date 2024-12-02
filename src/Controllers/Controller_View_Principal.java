@@ -336,6 +336,69 @@ public class Controller_View_Principal implements Initializable {
                 default:
                     throw new AssertionError("Libro no reconocido");
             }
+        } else if (event.getSource() == btnComprarGN) {
+
+            Stack<Nodo_Book> books = pilaB.getBooks(idUsuario);
+
+            if (books != null) {
+
+                switch (imagenGN.getUserData().toString()) {
+                    case "/Images/LIBRO1.jpg":
+                        Alert(Alert.AlertType.CONFIRMATION, "COMPRA", "Su compra se ha realizado con exitooo..!\nPor un total de 70000.0 COP");
+                        if (pilaB.getBook(idUsuario, "Juego de Tronos") != null) {
+                            pilaB.popBook(idUsuario, "Juego de Tronos");
+                            pilaB.guardarBooks();
+                            if (panelCarrito.isVisible()) {
+                                mostrarBooksC();
+                            }
+                        }
+                        break;
+                    case "/Images/LIBRO2.jpg":
+                        Alert(Alert.AlertType.CONFIRMATION, "COMPRA", "Su compra se ha realizado con exitooo..!\nPor un total de 95000.0 COP");
+                        if (pilaB.getBook(idUsuario, "Divergente") != null) {
+                            pilaB.popBook(idUsuario, "Divergente");
+                            pilaB.guardarBooks();
+                            if (panelCarrito.isVisible()) {
+                                mostrarBooksC();
+                            }
+                        }
+                        break;
+                    case "/Images/LIBRO3.jpg":
+                        Alert(Alert.AlertType.CONFIRMATION, "COMPRA", "Su compra se ha realizado con exitooo..!\nPor un total de 80000.0 COP");
+                        if (pilaB.getBook(idUsuario, "Principito") != null) {
+                            pilaB.popBook(idUsuario, "Principito");
+                            pilaB.guardarBooks();
+                            if (panelCarrito.isVisible()) {
+                                mostrarBooksC();
+                            }
+                        }
+                        break;
+                    case "/Images/LIBRO4.jpg":
+                        Alert(Alert.AlertType.CONFIRMATION, "COMPRA", "Su compra se ha realizado con exitooo..!\nPor un total de 50000.0 COP");
+                        if (pilaB.getBook(idUsuario, "Hamlet") != null) {
+                            pilaB.popBook(idUsuario, "Hamlet");
+                            pilaB.guardarBooks();
+                            if (panelCarrito.isVisible()) {
+                                mostrarBooksC();
+                            }
+                        }
+                        break;
+                    default:
+                        throw new AssertionError("Libro no reconocido");
+                }
+            }
+        } else if (event.getSource() == btnComprarC) {
+            Stack<Nodo_Book> books = pilaB.getBooks(idUsuario);
+
+            if (books != null) {
+                mostrarBooksC();
+                Alert(Alert.AlertType.CONFIRMATION, "COMPRA", "Su compra se ha realizado con exitooo..!\nPor un total de " + txtTotal.getText());
+                for (Nodo_Book book : books) {
+                    pilaB.popBook(idUsuario, book.getTitulo());
+                }
+                pilaB.guardarBooks();
+                mostrarBooksC();
+            }
         }
     }
 
@@ -453,18 +516,22 @@ public class Controller_View_Principal implements Initializable {
             containerBooksC.getChildren().remove(C_JuegodeTronos);
             pilaB.popBook(idUsuario, "Juego de Tronos");
             pilaB.guardarBooks();
+            mostrarBooksC();
         } else if (event.getSource() == e2) {
             containerBooksC.getChildren().remove(C_Divergente);
             pilaB.popBook(idUsuario, "Divergente");
             pilaB.guardarBooks();
+            mostrarBooksC();
         } else if (event.getSource() == e3) {
             containerBooksC.getChildren().remove(C_Hamlet);
             pilaB.popBook(idUsuario, "Hamlet");
             pilaB.guardarBooks();
+            mostrarBooksC();
         } else if (event.getSource() == e4) {
             containerBooksC.getChildren().remove(C_Principito);
             pilaB.popBook(idUsuario, "Principito");
             pilaB.guardarBooks();
+            mostrarBooksC();
         }
     }
 
@@ -472,7 +539,7 @@ public class Controller_View_Principal implements Initializable {
         try {
             containerBooksC.getChildren().clear();
             containerBooksC.getChildren().addAll(elementosCarrito);
-
+            float total = 0;
             Stack<Nodo_Book> books = pilaB.getBooks(idUsuario);
 
             if (books == null) {
@@ -494,6 +561,20 @@ public class Controller_View_Principal implements Initializable {
                         String titulo = bookAux.getTitulo().replaceAll(" ", "");
                         if (newHbox.getId().equals("C_" + titulo)) {
                             librosAgregar.add(newHbox);
+                            switch (("C_" + titulo)) {
+                                case "C_JuegodeTronos":
+                                    total += 70000;
+                                    break;
+                                case "C_Divergente":
+                                    total += 95000;
+                                    break;
+                                case "C_Hamlet":
+                                    total += 50000;
+                                    break;
+                                case "C_Principito":
+                                    total += 80000;
+                                    break;
+                            }
                         }
                     }
                 }
@@ -502,10 +583,14 @@ public class Controller_View_Principal implements Initializable {
                     containerBooksC.getChildren().clear();
                     NO_HAY_CAR.setVisible(true);
                     NO_HAY_FAV.setVisible(false);
+                    txtTotal.setText("00,000 COP");
                 } else {
                     containerBooksC.getChildren().clear();
                     containerBooksC.getChildren().addAll(librosAgregar);
                     NO_HAY_CAR.setVisible(false);
+                    NO_HAY_FAV.setVisible(false);
+
+                    txtTotal.setText(total + " COP");
                 }
             }
         } catch (NullPointerException e) {
@@ -551,6 +636,7 @@ public class Controller_View_Principal implements Initializable {
                     containerBooksF.getChildren().clear();
                     containerBooksF.getChildren().addAll(librosAgregar);
                     NO_HAY_FAV.setVisible(false);
+                    NO_HAY_CAR.setVisible(false);
                 }
             }
         } catch (NullPointerException e) {

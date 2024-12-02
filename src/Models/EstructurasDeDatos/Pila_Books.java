@@ -65,10 +65,7 @@ public class Pila_Books {
         if (!pilaC.empty()) {
             aux = getBook(id, titulo);
             if ((aux != null) && (pilaC.remove(aux))) {
-                alert.setAlertType(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Aviso.");
-                alert.setContentText("Libro elimindo.");
-                alert.showAndWait();
+                System.out.println("Libro eliminado");
             } else {
                 alert.setAlertType(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Aviso.");
@@ -133,10 +130,7 @@ public class Pila_Books {
         if (!pilaFav.empty()) {
             aux = getBookFav(id, titulo);
             if ((aux != null) && (pilaFav.remove(aux))) {
-                alert.setAlertType(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Aviso.");
-                alert.setContentText("Libro elimindo.");
-                alert.showAndWait();
+                System.out.println("Libro eliminado");
             } else {
                 alert.setAlertType(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Aviso.");
