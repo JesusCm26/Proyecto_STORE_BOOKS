@@ -3,9 +3,6 @@
 <h1>Integrantes:</h1>
 
 - <h4>Miguel Macia Medina</h4>
-- <h4>Jesus Eduardo Velez Ramos</h4>
-- <h4>Miguel angel Hernández Padilla</h4>
-- <h4>Jesús David Correa Monroy</h4>
 
 # Manual de Usuario
 
